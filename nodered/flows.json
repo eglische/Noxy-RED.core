@@ -1,0 +1,1463 @@
+[
+    {
+        "id": "1595882e0f579de3",
+        "type": "tab",
+        "label": "Example",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "675a23e0d48d3489",
+        "type": "tab",
+        "label": "OSR2+ MFP integration",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "mqtt_broker",
+        "type": "mqtt-broker",
+        "name": "Local MQTT",
+        "broker": "172.28.0.2",
+        "port": "1883",
+        "clientid": "NodeRed_Client",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "41cf87d9d5b1e089",
+        "type": "websocket-listener",
+        "path": "ws://127.0.0.1:5384",
+        "wholemsg": "false"
+    },
+    {
+        "id": "a0a42fdf73b999c0",
+        "type": "websocket-client",
+        "path": "ws://192.168.1.13:2666",
+        "tls": "",
+        "wholemsg": "false",
+        "hb": "0",
+        "subprotocol": "",
+        "headers": []
+    },
+    {
+        "id": "5987c792cbcc030d",
+        "type": "discord-token",
+        "name": "input"
+    },
+    {
+        "id": "474ab1fd47cae31f",
+        "type": "discord-token",
+        "name": "output"
+    },
+    {
+        "id": "592ae37a38d0305b",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "34a54d63eafa9cfc",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "2c0480e168bf55d7",
+        "type": "ui_group",
+        "name": "Stroker ON",
+        "tab": "592ae37a38d0305b",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "71195d9c993607f7",
+        "type": "mqtt-broker",
+        "name": "HOIT MQTT",
+        "broker": "192.168.1.5",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a39fde599382f327",
+        "type": "websocket-listener",
+        "path": "/ws",
+        "wholemsg": "false"
+    },
+    {
+        "id": "871c41b82d42d34f",
+        "type": "switch",
+        "z": "1595882e0f579de3",
+        "name": "Action Routing",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "generic001",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic002",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic003",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic004",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic005",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic006",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic007",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic008",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "13f00690f4831e53",
+                "27f30b929bcef5c2"
+            ],
+            [
+                "13f00690f4831e53",
+                "4b131baf244052d1"
+            ],
+            [
+                "13f00690f4831e53",
+                "5e4a57ad1b03db61"
+            ],
+            [
+                "13f00690f4831e53",
+                "e575f56dd6d461f3"
+            ],
+            [
+                "13f00690f4831e53",
+                "125c58e3708a72dc"
+            ],
+            [
+                "685c2dc29eca0d60"
+            ],
+            [
+                "2082c7af8480d909"
+            ],
+            [
+                "c8d961265c9d3870"
+            ]
+        ]
+    },
+    {
+        "id": "13f00690f4831e53",
+        "type": "debug",
+        "z": "1595882e0f579de3",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "917754daa05e8196",
+        "type": "mqtt in",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "topic": "/noxyred/triggers",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "871c41b82d42d34f"
+            ]
+        ]
+    },
+    {
+        "id": "125c58e3708a72dc",
+        "type": "function",
+        "z": "1595882e0f579de3",
+        "name": "Secret Example generic 005",
+        "func": "msg.payload = \"/secret generic005 has triggered a secret\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 200,
+        "wires": [
+            [
+                "10546777ac1646e5",
+                "455d2d6d42deb9b8"
+            ]
+        ]
+    },
+    {
+        "id": "a7d09e0b03e9a3c6",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "Check if status is connected",
+        "info": "",
+        "x": 160,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1bf1c366707c0c5c",
+        "type": "mqtt in",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "topic": "/noxyred/chat",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 126.05000305175781,
+        "y": 679.0499877929688,
+        "wires": [
+            [
+                "d2fa85da14da5e10"
+            ]
+        ]
+    },
+    {
+        "id": "d2fa85da14da5e10",
+        "type": "debug",
+        "z": "1595882e0f579de3",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "d48bcaaa3b176e91",
+        "type": "inject",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "SwitchChatTopic=false",
+        "payloadType": "str",
+        "x": 180,
+        "y": 620,
+        "wires": [
+            [
+                "cd12fcfcfb6f778c"
+            ]
+        ]
+    },
+    {
+        "id": "cd12fcfcfb6f778c",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "/noxyred/chat",
+        "topic": "/noxyred/chat",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 400,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "6f4e6bf99a8a7e4b",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "/noxyred/keys",
+        "topic": "/noxyred/keys",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 1140,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "feccfa2043758d5f",
+        "type": "inject",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[0x5B]",
+        "payloadType": "str",
+        "x": 850,
+        "y": 640,
+        "wires": [
+            [
+                "b8762ff88f6c8b67"
+            ]
+        ]
+    },
+    {
+        "id": "b8762ff88f6c8b67",
+        "type": "delay",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 640,
+        "wires": [
+            [
+                "6f4e6bf99a8a7e4b"
+            ]
+        ]
+    },
+    {
+        "id": "10546777ac1646e5",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "/noxyred/messages",
+        "topic": "/noxyred/messages",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 1270,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9e806b2bbed87838",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "Enable Chat Output from Voxta into Noxy",
+        "info": "",
+        "x": 220,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "421c63f625aa162d",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "Example to send Windows Key after 2sec.",
+        "info": "",
+        "x": 1020,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "e575f56dd6d461f3",
+        "type": "function",
+        "z": "1595882e0f579de3",
+        "name": "Note Example generic004",
+        "func": "msg.payload = \"/note generic004 has triggered a note\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 160,
+        "wires": [
+            [
+                "10546777ac1646e5",
+                "2fa26ed76a50c6d8"
+            ]
+        ]
+    },
+    {
+        "id": "5e4a57ad1b03db61",
+        "type": "function",
+        "z": "1595882e0f579de3",
+        "name": "Chat Example generic003",
+        "func": "msg.payload = \"/char This is automated Text comming from Noxy-RED. If you read this, it means it works and the generic zero zero three Action has been triggered\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 120,
+        "wires": [
+            [
+                "10546777ac1646e5",
+                "1bafa460869fc2fb"
+            ]
+        ]
+    },
+    {
+        "id": "4b131baf244052d1",
+        "type": "function",
+        "z": "1595882e0f579de3",
+        "name": "Event Example generic002",
+        "func": "msg.payload = \"/event generic002 has triggered a event, tell {{user}} that it works\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 80,
+        "wires": [
+            [
+                "10546777ac1646e5",
+                "0ea76d7362144d7f"
+            ]
+        ]
+    },
+    {
+        "id": "27f30b929bcef5c2",
+        "type": "function",
+        "z": "1595882e0f579de3",
+        "name": "Flag Example generic001",
+        "func": "msg.payload = \"/setflags !second_action !third_action !forth_action !fifth_action\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 40,
+        "wires": [
+            [
+                "10546777ac1646e5",
+                "8e38884131400f4e"
+            ]
+        ]
+    },
+    {
+        "id": "ac4f6d84580ef7ed",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "debug nodes are used for troubleshooting",
+        "info": "",
+        "x": 920,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1aecca094ebf16fd",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "<- the green field is like a button you can toggle on and off",
+        "info": "",
+        "x": 1070,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "8e38884131400f4e",
+        "type": "debug",
+        "z": "1595882e0f579de3",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "0ea76d7362144d7f",
+        "type": "debug",
+        "z": "1595882e0f579de3",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1bafa460869fc2fb",
+        "type": "debug",
+        "z": "1595882e0f579de3",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2fa26ed76a50c6d8",
+        "type": "debug",
+        "z": "1595882e0f579de3",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "455d2d6d42deb9b8",
+        "type": "debug",
+        "z": "1595882e0f579de3",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "49afab7e4edc6eee",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "/noxyred/soundeffecttopic",
+        "topic": "/noxyred/soundeffecttopic",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 560,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "685c2dc29eca0d60",
+        "type": "trigger",
+        "z": "1595882e0f579de3",
+        "name": "Intro",
+        "op1": "p_910",
+        "op2": "/char Ready to test Noxy-RED with me? I can trigger for your some actions to showcase their function, or play one of my favorite tune for you. Let me know!",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "4",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 2,
+        "x": 270,
+        "y": 400,
+        "wires": [
+            [
+                "49afab7e4edc6eee"
+            ],
+            [
+                "9db69b01a7fa78b0"
+            ]
+        ]
+    },
+    {
+        "id": "9db69b01a7fa78b0",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "/noxyred/messages",
+        "topic": "/noxyred/messages",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 580,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "89af93fa56b43e3b",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "Example to trigger a Soundeffect",
+        "info": "",
+        "x": 480,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2082c7af8480d909",
+        "type": "trigger",
+        "z": "1595882e0f579de3",
+        "name": "Music",
+        "op1": "p_915",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "4",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 2,
+        "x": 270,
+        "y": 440,
+        "wires": [
+            [
+                "49afab7e4edc6eee"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c8d961265c9d3870",
+        "type": "trigger",
+        "z": "1595882e0f579de3",
+        "name": "stop",
+        "op1": "stop:p_915",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "4",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 2,
+        "x": 270,
+        "y": 480,
+        "wires": [
+            [
+                "49afab7e4edc6eee"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5c3e559946fd54c3",
+        "type": "function",
+        "z": "675a23e0d48d3489",
+        "name": "Speed Controller",
+        "func": "// Initialize state variables\nvar lastspeed = context.get('lastspeed') || 0;\nvar wasstarted = context.get('wasstarted') || false;\n\n// Define VR codes for speed control\nconst vr_codes = {\n    0: [0x11, 0x30], // CTRL + 0 (Stop)\n    1: [0x11, 0x31], // CTRL + 1\n    2: [0x11, 0x32], // CTRL + 2\n    3: [0x11, 0x33], // CTRL + 3\n    4: [0x11, 0x34], // CTRL + 4\n    5: [0x11, 0x35], // CTRL + 5\n    6: [0x11, 0x36], // CTRL + 6\n    7: [0x11, 0x37], // CTRL + 7 (Twist On)\n    8: [0x11, 0x38]  // CTRL + 8 (Twist Off)\n};\n\n// Function to get a random number within a given range (inclusive)\nfunction getRandomInRange(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\n// Prepare the output messages\nlet output0 = null;\nlet output1 = null;\n\n// Helper function to format the array as a string \"[0x11, 0x30]\"\nfunction formatVrCode(code) {\n    return `[${code.map(byte => '0x' + byte.toString(16)).join(', ')}]`;\n}\n\n// Get the input command\nconst command = msg.payload.toLowerCase();\n\nswitch (command) {\n    case 'faster':\n        if (lastspeed < 7) {\n            lastspeed += 1;\n            output0 = { payload: formatVrCode(vr_codes[lastspeed]) };\n            if (lastspeed === 7) {\n                output1 = { payload: 'maxspeed' };\n            }\n        }\n        wasstarted = true;\n        break;\n\n    case 'slower':\n        if (lastspeed > 1) {\n            lastspeed -= 1;\n            output0 = { payload: formatVrCode(vr_codes[lastspeed]) };\n            if (lastspeed === 1) {\n                output1 = { payload: 'minspeed' };\n            }\n        }\n        wasstarted = true;\n        break;\n\n    case 'stop':\n        lastspeed = 0;\n        output0 = { payload: formatVrCode(vr_codes[0]) };\n        output1 = { payload: 'stop' };\n        wasstarted = false;\n        break;\n\n    case 'twiston':\n        output0 = { payload: formatVrCode(vr_codes[7]) }; // CTRL + 7\n        break;\n\n    case 'twistoff':\n        output0 = { payload: formatVrCode(vr_codes[8]) }; // CTRL + 8\n        break;\n\n    case 'speedslow':\n        lastspeed = getRandomInRange(1, 3); // CTRL 1-3\n        output0 = { payload: formatVrCode(vr_codes[lastspeed]) };\n        break;\n\n    case 'speedmedium':\n        lastspeed = getRandomInRange(3, 5); // CTRL 3-5\n        output0 = { payload: formatVrCode(vr_codes[lastspeed]) };\n        break;\n\n    case 'speedfast':\n        lastspeed = getRandomInRange(5, 7); // CTRL 5-7\n        output0 = { payload: formatVrCode(vr_codes[lastspeed]) };\n        break;\n\n    default:\n        node.warn(\"Invalid command received\");\n        return; // Exit the function to avoid loops\n}\n\n// Store the lastspeed and wasstarted state in the context\ncontext.set('lastspeed', lastspeed);\ncontext.set('wasstarted', wasstarted);\n\n// Return the outputs\nreturn [output0, output1];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 240,
+        "wires": [
+            [
+                "3c79518818f8ca0e",
+                "3df74006f40ed71c"
+            ],
+            [
+                "be3ff36a09f91a64"
+            ]
+        ]
+    },
+    {
+        "id": "b0407f39b2f5e412",
+        "type": "switch",
+        "z": "675a23e0d48d3489",
+        "name": "Action Routing",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "generic000",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic001",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic002",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic003",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic004",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic005",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic006",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "generic007",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 400,
+        "y": 240,
+        "wires": [
+            [
+                "e65f02095438c001"
+            ],
+            [
+                "a554cf94e2c48f18"
+            ],
+            [
+                "07a474a933f25507"
+            ],
+            [
+                "7a5fc915942effb7"
+            ],
+            [
+                "df32dab4239d05f6"
+            ],
+            [
+                "aaeb134b777398c1"
+            ],
+            [
+                "a4192491c4bb19eb"
+            ],
+            [
+                "417814df9a814a4c"
+            ]
+        ]
+    },
+    {
+        "id": "9295f83a2bed0201",
+        "type": "mqtt in",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "topic": "/noxyred/triggers",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "b0407f39b2f5e412"
+            ]
+        ]
+    },
+    {
+        "id": "e65f02095438c001",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "stop",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "stop",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 100,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "a554cf94e2c48f18",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "faster",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "faster",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 140,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "07a474a933f25507",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "slower",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "slower",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 180,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "7a5fc915942effb7",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "twiston",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "twiston",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 220,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "df32dab4239d05f6",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "twistoff",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "twistoff",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 260,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "aaeb134b777398c1",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "speedslow",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "speedslow",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 300,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "a4192491c4bb19eb",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "speedmedium",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "speedmedium",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "417814df9a814a4c",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "speedfast",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "speedfast",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 380,
+        "wires": [
+            [
+                "5c3e559946fd54c3"
+            ]
+        ]
+    },
+    {
+        "id": "3c79518818f8ca0e",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "/noxyred/keys",
+        "topic": "/noxyred/keys",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 1600,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "405e5ce33bcec151",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "/noxyred/messages",
+        "topic": "/noxyred/messages",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 1620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "dd19bd08597feaa3",
+        "type": "function",
+        "z": "675a23e0d48d3489",
+        "name": "maxspeed",
+        "func": "msg.payload = \"/setflags faster !slower\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 380,
+        "wires": [
+            [
+                "405e5ce33bcec151"
+            ]
+        ]
+    },
+    {
+        "id": "06d69d4e1c6f860c",
+        "type": "function",
+        "z": "675a23e0d48d3489",
+        "name": "minspeed",
+        "func": "msg.payload = \"/setflags slower !faster\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 420,
+        "wires": [
+            [
+                "405e5ce33bcec151"
+            ]
+        ]
+    },
+    {
+        "id": "be3ff36a09f91a64",
+        "type": "switch",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "maxspeed",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "minspeed",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1070,
+        "y": 400,
+        "wires": [
+            [
+                "dd19bd08597feaa3"
+            ],
+            [
+                "06d69d4e1c6f860c"
+            ]
+        ]
+    },
+    {
+        "id": "3df74006f40ed71c",
+        "type": "debug",
+        "z": "675a23e0d48d3489",
+        "name": "debug 20",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1400,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "56ca0d1b29176d02",
+        "type": "link in",
+        "z": "675a23e0d48d3489",
+        "name": "osr",
+        "links": [
+            "959690354e354046",
+            "f045d6fb7a26b579",
+            "3f75141f2532d0c4",
+            "8994b2d1ed5774bf",
+            "2f473835e5cb6756",
+            "1dfd2883638c67fb"
+        ],
+        "x": 165,
+        "y": 440,
+        "wires": [
+            [
+                "4faa20df88d46dc4"
+            ]
+        ]
+    },
+    {
+        "id": "4faa20df88d46dc4",
+        "type": "switch",
+        "z": "675a23e0d48d3489",
+        "name": "Action Routing",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "stop",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "faster",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "slower",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "twiston",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "twistoff",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "speedslow",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "speedmedium",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "speedfast",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 400,
+        "y": 440,
+        "wires": [
+            [
+                "e65f02095438c001"
+            ],
+            [
+                "a554cf94e2c48f18"
+            ],
+            [
+                "07a474a933f25507"
+            ],
+            [
+                "7a5fc915942effb7"
+            ],
+            [
+                "df32dab4239d05f6"
+            ],
+            [
+                "aaeb134b777398c1"
+            ],
+            [
+                "a4192491c4bb19eb"
+            ],
+            [
+                "417814df9a814a4c"
+            ]
+        ]
+    },
+    {
+        "id": "64c8422f639239f4",
+        "type": "mqtt in",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "topic": "/noxyred/vam",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "b0407f39b2f5e412"
+            ]
+        ]
+    }
+]
