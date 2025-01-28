@@ -1,0 +1,1317 @@
+{
+  "LogLevel": "Info",
+  "LogBlacklist": {
+    "MultiFunPlayer.Input.RawInput.*": "Trace",
+    "MultiFunPlayer.Input.XInput.*": "Trace"
+  },
+  "ConfigVersion": 41,
+  "Devices": [
+    {
+      "Name": "TCode-0.2",
+      "IsDefault": true,
+      "OutputPrecision": 3,
+      "Axes": [
+        {
+          "Name": "L0",
+          "FriendlyName": "Up/Down",
+          "FunscriptNames": [
+            "*",
+            "stroke",
+            "L0",
+            "up"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "L1",
+          "FriendlyName": "Forward/Backward",
+          "FunscriptNames": [
+            "surge",
+            "L1",
+            "forward"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "L2",
+          "FriendlyName": "Left/Right",
+          "FunscriptNames": [
+            "sway",
+            "L2",
+            "left"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "R0",
+          "FriendlyName": "Twist",
+          "FunscriptNames": [
+            "twist",
+            "R0",
+            "yaw"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "R1",
+          "FriendlyName": "Roll",
+          "FunscriptNames": [
+            "roll",
+            "R1"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "R2",
+          "FriendlyName": "Pitch",
+          "FunscriptNames": [
+            "pitch",
+            "R2"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "V0",
+          "FriendlyName": "Vibrate",
+          "FunscriptNames": [
+            "vib",
+            "V0"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        },
+        {
+          "Name": "V1",
+          "FriendlyName": "Pump",
+          "FunscriptNames": [
+            "pump",
+            "lube",
+            "V1"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        },
+        {
+          "Name": "L3",
+          "FriendlyName": "Suction",
+          "FunscriptNames": [
+            "suck",
+            "valve",
+            "L3"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        }
+      ]
+    },
+    {
+      "Name": "TCode-0.3",
+      "IsDefault": true,
+      "OutputPrecision": 4,
+      "Axes": [
+        {
+          "Name": "L0",
+          "FriendlyName": "Up/Down",
+          "FunscriptNames": [
+            "*",
+            "stroke",
+            "L0",
+            "up"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "L1",
+          "FriendlyName": "Forward/Backward",
+          "FunscriptNames": [
+            "surge",
+            "L1",
+            "forward"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "L2",
+          "FriendlyName": "Left/Right",
+          "FunscriptNames": [
+            "sway",
+            "L2",
+            "left"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "R0",
+          "FriendlyName": "Twist",
+          "FunscriptNames": [
+            "twist",
+            "R0",
+            "yaw"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "R1",
+          "FriendlyName": "Roll",
+          "FunscriptNames": [
+            "roll",
+            "R1"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "R2",
+          "FriendlyName": "Pitch",
+          "FunscriptNames": [
+            "pitch",
+            "R2"
+          ],
+          "DefaultValue": 0.5,
+          "Enabled": true
+        },
+        {
+          "Name": "V0",
+          "FriendlyName": "Vibrate",
+          "FunscriptNames": [
+            "vib",
+            "V0"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        },
+        {
+          "Name": "V1",
+          "FriendlyName": "Pump",
+          "FunscriptNames": [
+            "pump",
+            "V1"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        },
+        {
+          "Name": "A0",
+          "FriendlyName": "Valve",
+          "FunscriptNames": [
+            "valve",
+            "A0"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        },
+        {
+          "Name": "A1",
+          "FriendlyName": "Suction",
+          "FunscriptNames": [
+            "suck",
+            "A1"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        },
+        {
+          "Name": "A2",
+          "FriendlyName": "Lube",
+          "FunscriptNames": [
+            "lube",
+            "A2"
+          ],
+          "DefaultValue": 0.0,
+          "Enabled": false
+        }
+      ]
+    }
+  ],
+  "SelectedDevice": "TCode-0.3",
+  "OutputTarget": {
+    "ContentVisible": true,
+    "ScanDelay": 2500,
+    "ScanInterval": 5000,
+    "ActiveItem": "Buttplug.io/0",
+    "Items": [
+      {
+        "$index": 0,
+        "$type": "MultiFunPlayer.OutputTarget.ViewModels.ButtplugOutputTarget, MultiFunPlayer",
+        "AutoConnectEnabled": false,
+        "AxisSettings": {
+          "L0": {
+            "Minimum": 0.0,
+            "Maximum": 0.9279999999999999,
+            "Enabled": true
+          },
+          "L1": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "L2": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "R0": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "R1": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "R2": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          }
+        },
+        "UpdateContextSettings": {
+          "AsyncFixedUpdateContext": {
+            "UpdateInterval": 50
+          },
+          "AsyncPolledUpdateContext": {}
+        },
+        "Endpoint": "127.0.0.1:12345",
+        "DeviceSettings": [
+          {
+            "DeviceName": "Lovense Max",
+            "DeviceIndex": 0,
+            "SourceAxis": "L0",
+            "ActuatorType": "Vibrate",
+            "ActuatorIndex": 0,
+            "UpdateType": "FixedUpdate"
+          },
+          {
+            "DeviceName": "Lovense Max",
+            "DeviceIndex": 0,
+            "SourceAxis": "L1",
+            "ActuatorType": "Constrict",
+            "ActuatorIndex": 1,
+            "UpdateType": "FixedUpdate"
+          }
+        ]
+      },
+      {
+        "$index": 0,
+        "$type": "MultiFunPlayer.OutputTarget.ViewModels.SerialOutputTarget, MultiFunPlayer",
+        "AutoConnectEnabled": false,
+        "AxisSettings": {
+          "L0": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "L1": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "L2": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "R0": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "R1": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          },
+          "R2": {
+            "Minimum": 0.0,
+            "Maximum": 1.0,
+            "Enabled": true
+          }
+        },
+        "UpdateContextSettings": {
+          "TCodeThreadFixedUpdateContext": {
+            "OffloadElapsedTime": true,
+            "SendDirtyValuesOnly": true,
+            "UsePreciseSleep": false,
+            "UpdateInterval": 10
+          },
+          "ThreadPolledUpdateContext": {}
+        },
+        "UpdateType": "FixedUpdate",
+        "SelectedSerialPort": "USB\\VID_2341&PID_0043\\B&1CB1C1D&0&2",
+        "BaudRate": 115200,
+        "Parity": "None",
+        "StopBits": "One",
+        "DataBits": 8,
+        "Handshake": "None",
+        "DtrEnable": true,
+        "RtsEnable": true,
+        "ReadTimeout": 250,
+        "WriteTimeout": 250,
+        "WriteBufferSize": 2048,
+        "ReadBufferSize": 4096
+      }
+    ]
+  },
+  "MotionProvider": {
+    "L0": [
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.CustomCurveMotionProvider, MultiFunPlayer",
+        "Points": [
+          "0,0"
+        ],
+        "InterpolationType": "Linear",
+        "Duration": 10.0,
+        "IsLooping": true,
+        "SyncOnEnd": true,
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.LoopingScriptMotionProvider, MultiFunPlayer",
+        "SourceFile": null,
+        "InterpolationType": "Pchip",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.PatternMotionProvider, MultiFunPlayer",
+        "Pattern": "Sine",
+        "Speed": 2.0,
+        "Minimum": 0.7,
+        "Maximum": 0.8
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.RandomMotionProvider, MultiFunPlayer",
+        "Octaves": 1,
+        "Persistence": 1.0,
+        "Lacunarity": 1.0,
+        "Speed": 0.3,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      }
+    ],
+    "L1": [
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.CustomCurveMotionProvider, MultiFunPlayer",
+        "Points": [
+          "0,0"
+        ],
+        "InterpolationType": "Linear",
+        "Duration": 10.0,
+        "IsLooping": true,
+        "SyncOnEnd": true,
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.LoopingScriptMotionProvider, MultiFunPlayer",
+        "SourceFile": null,
+        "InterpolationType": "Pchip",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.PatternMotionProvider, MultiFunPlayer",
+        "Pattern": "Square",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 0.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.RandomMotionProvider, MultiFunPlayer",
+        "Octaves": 1,
+        "Persistence": 1.0,
+        "Lacunarity": 1.0,
+        "Speed": 0.3,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      }
+    ],
+    "L2": [
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.CustomCurveMotionProvider, MultiFunPlayer",
+        "Points": [
+          "0,0"
+        ],
+        "InterpolationType": "Linear",
+        "Duration": 10.0,
+        "IsLooping": true,
+        "SyncOnEnd": true,
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.LoopingScriptMotionProvider, MultiFunPlayer",
+        "SourceFile": null,
+        "InterpolationType": "Pchip",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.PatternMotionProvider, MultiFunPlayer",
+        "Pattern": "Triangle",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.RandomMotionProvider, MultiFunPlayer",
+        "Octaves": 1,
+        "Persistence": 1.0,
+        "Lacunarity": 1.0,
+        "Speed": 0.3,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      }
+    ],
+    "R0": [
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.CustomCurveMotionProvider, MultiFunPlayer",
+        "Points": [
+          "0,0"
+        ],
+        "InterpolationType": "Linear",
+        "Duration": 10.0,
+        "IsLooping": true,
+        "SyncOnEnd": true,
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.LoopingScriptMotionProvider, MultiFunPlayer",
+        "SourceFile": null,
+        "InterpolationType": "Pchip",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.PatternMotionProvider, MultiFunPlayer",
+        "Pattern": "Triangle",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.RandomMotionProvider, MultiFunPlayer",
+        "Octaves": 1,
+        "Persistence": 1.0,
+        "Lacunarity": 1.0,
+        "Speed": 0.3,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      }
+    ],
+    "R1": [
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.CustomCurveMotionProvider, MultiFunPlayer",
+        "Points": [
+          "0,0"
+        ],
+        "InterpolationType": "Linear",
+        "Duration": 10.0,
+        "IsLooping": true,
+        "SyncOnEnd": true,
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.LoopingScriptMotionProvider, MultiFunPlayer",
+        "SourceFile": null,
+        "InterpolationType": "Pchip",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.PatternMotionProvider, MultiFunPlayer",
+        "Pattern": "Triangle",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.RandomMotionProvider, MultiFunPlayer",
+        "Octaves": 1,
+        "Persistence": 1.0,
+        "Lacunarity": 1.0,
+        "Speed": 0.3,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      }
+    ],
+    "R2": [
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.CustomCurveMotionProvider, MultiFunPlayer",
+        "Points": [
+          "0,0"
+        ],
+        "InterpolationType": "Linear",
+        "Duration": 10.0,
+        "IsLooping": true,
+        "SyncOnEnd": true,
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.LoopingScriptMotionProvider, MultiFunPlayer",
+        "SourceFile": null,
+        "InterpolationType": "Pchip",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.PatternMotionProvider, MultiFunPlayer",
+        "Pattern": "Triangle",
+        "Speed": 1.0,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      },
+      {
+        "$type": "MultiFunPlayer.MotionProvider.ViewModels.RandomMotionProvider, MultiFunPlayer",
+        "Octaves": 1,
+        "Persistence": 1.0,
+        "Lacunarity": 1.0,
+        "Speed": 0.3,
+        "Minimum": 0.0,
+        "Maximum": 1.0
+      }
+    ]
+  },
+  "Script": {
+    "Repositories": {
+      "Local": {
+        "ScriptLibraries": [],
+        "Enabled": true
+      },
+      "Stash": {
+        "ServerBaseUri": "http://127.0.0.1:9999",
+        "ApiKey": null,
+        "LocalMatchType": "MatchToCurrentFile",
+        "DmsMatchType": "MatchToAxis",
+        "DmsMatchAxis": "L0",
+        "Enabled": false
+      },
+      "XBVR": {
+        "ServerBaseUri": "http://127.0.0.1:9999",
+        "LocalMatchType": "MatchToCurrentFile",
+        "DmsMatchType": "MatchToCurrentFile",
+        "Enabled": false
+      }
+    },
+    "AxisSettings": {
+      "L0": {
+        "LinkAxisHasPriority": false,
+        "LinkAxis": null,
+        "SmartLimitInputAxis": null,
+        "SmartLimitPoints": [
+          "25,100",
+          "90,0"
+        ],
+        "SmartLimitMode": "Value",
+        "SmartLimitTargetValue": 0.5,
+        "InterpolationType": "Pchip",
+        "AutoHomeEnabled": false,
+        "AutoHomeDelay": 0.0,
+        "AutoHomeDuration": 0.0,
+        "AutoHomeTargetValue": 0.5,
+        "AutoHomeInsideScript": false,
+        "InvertValue": false,
+        "Offset": 0.0,
+        "ScriptScale": 1.0,
+        "LockScript": false,
+        "BypassScript": false,
+        "BypassMotionProvider": false,
+        "BypassTransition": false,
+        "MotionProviderBlend": 0.0,
+        "MotionProviderFillGaps": false,
+        "MotionProviderMinimumGapDuration": 5.0,
+        "MotionProviderSpeedLimitWithAxis": true,
+        "UpdateMotionProviderWhenPaused": true,
+        "UpdateMotionProviderWithoutScript": true,
+        "UpdateMotionProviderWithAxis": null,
+        "SelectedMotionProvider": "Pattern",
+        "SpeedLimitEnabled": false,
+        "SpeedLimitUnitsPerSecond": 10.0
+      },
+      "L1": {
+        "LinkAxisHasPriority": false,
+        "LinkAxis": null,
+        "SmartLimitInputAxis": null,
+        "SmartLimitPoints": [
+          "25,100",
+          "90,0"
+        ],
+        "SmartLimitMode": "Value",
+        "SmartLimitTargetValue": 0.5,
+        "InterpolationType": "Pchip",
+        "AutoHomeEnabled": false,
+        "AutoHomeDelay": 5.0,
+        "AutoHomeDuration": 3.0,
+        "AutoHomeTargetValue": 0.5,
+        "AutoHomeInsideScript": false,
+        "InvertValue": false,
+        "Offset": 0.0,
+        "ScriptScale": 1.0,
+        "LockScript": false,
+        "BypassScript": false,
+        "BypassMotionProvider": false,
+        "BypassTransition": false,
+        "MotionProviderBlend": 0.0,
+        "MotionProviderFillGaps": false,
+        "MotionProviderMinimumGapDuration": 5.0,
+        "MotionProviderSpeedLimitWithAxis": true,
+        "UpdateMotionProviderWhenPaused": true,
+        "UpdateMotionProviderWithoutScript": true,
+        "UpdateMotionProviderWithAxis": null,
+        "SelectedMotionProvider": "Pattern",
+        "SpeedLimitEnabled": false,
+        "SpeedLimitUnitsPerSecond": 10.0
+      },
+      "L2": {
+        "LinkAxisHasPriority": false,
+        "LinkAxis": null,
+        "SmartLimitInputAxis": null,
+        "SmartLimitPoints": [
+          "25,100",
+          "90,0"
+        ],
+        "SmartLimitMode": "Value",
+        "SmartLimitTargetValue": 0.5,
+        "InterpolationType": "Pchip",
+        "AutoHomeEnabled": true,
+        "AutoHomeDelay": 5.0,
+        "AutoHomeDuration": 3.0,
+        "AutoHomeTargetValue": 0.5,
+        "AutoHomeInsideScript": false,
+        "InvertValue": false,
+        "Offset": 0.0,
+        "ScriptScale": 1.0,
+        "LockScript": false,
+        "BypassScript": false,
+        "BypassMotionProvider": false,
+        "BypassTransition": false,
+        "MotionProviderBlend": 0.0,
+        "MotionProviderFillGaps": false,
+        "MotionProviderMinimumGapDuration": 5.0,
+        "MotionProviderSpeedLimitWithAxis": true,
+        "UpdateMotionProviderWhenPaused": false,
+        "UpdateMotionProviderWithoutScript": false,
+        "UpdateMotionProviderWithAxis": null,
+        "SelectedMotionProvider": null,
+        "SpeedLimitEnabled": false,
+        "SpeedLimitUnitsPerSecond": 10.0
+      },
+      "R0": {
+        "LinkAxisHasPriority": false,
+        "LinkAxis": null,
+        "SmartLimitInputAxis": null,
+        "SmartLimitPoints": [
+          "25,100",
+          "90,0"
+        ],
+        "SmartLimitMode": "Value",
+        "SmartLimitTargetValue": 0.5,
+        "InterpolationType": "Pchip",
+        "AutoHomeEnabled": true,
+        "AutoHomeDelay": 5.0,
+        "AutoHomeDuration": 3.0,
+        "AutoHomeTargetValue": 0.5,
+        "AutoHomeInsideScript": false,
+        "InvertValue": false,
+        "Offset": 0.0,
+        "ScriptScale": 1.0,
+        "LockScript": false,
+        "BypassScript": false,
+        "BypassMotionProvider": false,
+        "BypassTransition": false,
+        "MotionProviderBlend": 0.0,
+        "MotionProviderFillGaps": false,
+        "MotionProviderMinimumGapDuration": 5.0,
+        "MotionProviderSpeedLimitWithAxis": true,
+        "UpdateMotionProviderWhenPaused": false,
+        "UpdateMotionProviderWithoutScript": true,
+        "UpdateMotionProviderWithAxis": "L0",
+        "SelectedMotionProvider": "Random",
+        "SpeedLimitEnabled": false,
+        "SpeedLimitUnitsPerSecond": 10.0
+      },
+      "R1": {
+        "LinkAxisHasPriority": false,
+        "LinkAxis": null,
+        "SmartLimitInputAxis": null,
+        "SmartLimitPoints": [
+          "25,100",
+          "90,0"
+        ],
+        "SmartLimitMode": "Value",
+        "SmartLimitTargetValue": 0.5,
+        "InterpolationType": "Pchip",
+        "AutoHomeEnabled": true,
+        "AutoHomeDelay": 5.0,
+        "AutoHomeDuration": 3.0,
+        "AutoHomeTargetValue": 0.5,
+        "AutoHomeInsideScript": false,
+        "InvertValue": false,
+        "Offset": 0.0,
+        "ScriptScale": 1.0,
+        "LockScript": false,
+        "BypassScript": false,
+        "BypassMotionProvider": false,
+        "BypassTransition": false,
+        "MotionProviderBlend": 0.0,
+        "MotionProviderFillGaps": false,
+        "MotionProviderMinimumGapDuration": 5.0,
+        "MotionProviderSpeedLimitWithAxis": true,
+        "UpdateMotionProviderWhenPaused": false,
+        "UpdateMotionProviderWithoutScript": true,
+        "UpdateMotionProviderWithAxis": "L0",
+        "SelectedMotionProvider": "Random",
+        "SpeedLimitEnabled": false,
+        "SpeedLimitUnitsPerSecond": 10.0
+      },
+      "R2": {
+        "LinkAxisHasPriority": false,
+        "LinkAxis": null,
+        "SmartLimitInputAxis": null,
+        "SmartLimitPoints": [
+          "25,100",
+          "90,0"
+        ],
+        "SmartLimitMode": "Value",
+        "SmartLimitTargetValue": 0.5,
+        "InterpolationType": "Pchip",
+        "AutoHomeEnabled": true,
+        "AutoHomeDelay": 5.0,
+        "AutoHomeDuration": 3.0,
+        "AutoHomeTargetValue": 0.5,
+        "AutoHomeInsideScript": false,
+        "InvertValue": false,
+        "Offset": 0.0,
+        "ScriptScale": 1.0,
+        "LockScript": false,
+        "BypassScript": false,
+        "BypassMotionProvider": false,
+        "BypassTransition": false,
+        "MotionProviderBlend": 0.0,
+        "MotionProviderFillGaps": false,
+        "MotionProviderMinimumGapDuration": 5.0,
+        "MotionProviderSpeedLimitWithAxis": true,
+        "UpdateMotionProviderWhenPaused": false,
+        "UpdateMotionProviderWithoutScript": true,
+        "UpdateMotionProviderWithAxis": "L0",
+        "SelectedMotionProvider": "Random",
+        "SpeedLimitEnabled": false,
+        "SpeedLimitUnitsPerSecond": 10.0
+      }
+    },
+    "MediaPathModifiers": [],
+    "SyncSettings": {
+      "Duration": 4.0,
+      "SyncOnMediaResourceChanged": true,
+      "SyncOnMediaPlayPause": true,
+      "SyncOnSeek": true,
+      "SyncOnAutoHomeStartEnd": true
+    },
+    "GlobalOffset": 0.0,
+    "ValuesContentVisible": true,
+    "MediaContentVisible": false,
+    "AxisContentVisible": true,
+    "HeatmapShowRange": true,
+    "HeatmapEnablePreview": true,
+    "HeatmapCombineHeat": true,
+    "HeatmapBucketCount": 333,
+    "HeatmapInvertY": false,
+    "AutoSkipToScriptStartEnabled": true,
+    "AutoSkipToScriptStartOffset": -5.0
+  },
+  "AlwaysOnTop": false,
+  "ErrorDisplayType": "Snackbar",
+  "EnableUILogging": false,
+  "AllowWindowResize": false,
+  "AppOrientation": "Vertical",
+  "RememberWindowLocation": false,
+  "Theme": {
+    "EnableColorAdjustment": false,
+    "PrimaryColor": "#FF718792",
+    "Contrast": "Medium",
+    "ContrastRatio": 4.5,
+    "IsDarkTheme": false
+  },
+  "Input": {
+    "RawInput": {
+      "VirtualMouseWidth": 500,
+      "VirtualMouseHeight": 500,
+      "VirtualWheelWidth": 10,
+      "VirtualWheelHeight": 20,
+      "MaximumMouseAxisUpdateRate": 125
+    },
+    "XInput": {
+      "RightThumbDeadZone": 0.2651753288369396,
+      "LeftThumbDeadZone": 0.23953978087710195,
+      "TriggerDeadZone": 0.11764705882352941
+    }
+  },
+  "Shortcut": {
+    "Shortcuts": [
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D0",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.0
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.0
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D1",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.1
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.2
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D3",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.2
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.3
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D4",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.3
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.4
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D5",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.4
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.5
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D6",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.5
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.6
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D7",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.6
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.7
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D8",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.7
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.8
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      },
+      {
+        "$type": "MultiFunPlayer.Shortcut.ButtonPressShortcut, MultiFunPlayer",
+        "HandleRepeating": false,
+        "Name": null,
+        "Gesture": {
+          "$type": "MultiFunPlayer.Input.RawInput.KeyboardGestureDescriptor, MultiFunPlayer",
+          "Keys": [
+            "D9",
+            "LeftCtrl"
+          ]
+        },
+        "Actions": [
+          {
+            "Name": "MotionProvider::Pattern::Minimum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 0.8
+              }
+            ]
+          },
+          {
+            "Name": "MotionProvider::Pattern::Maximum::Set",
+            "Settings": [
+              {
+                "$type": "MultiFunPlayer.Common.DeviceAxis, MultiFunPlayer",
+                "Value": "L0"
+              },
+              {
+                "$type": "System.Double, System.Private.CoreLib",
+                "Value": 1.0
+              }
+            ]
+          }
+        ],
+        "Enabled": true
+      }
+    ]
+  },
+  "DisablePopup": true,
+  "WindowHeight": 789.3333333333333,
+  "WindowLeft": 1406.6666666666665,
+  "WindowTop": 184.66666666666666,
+  "MediaSource": {
+    "ContentVisible": false,
+    "ScanDelay": 2500,
+    "ScanInterval": 5000,
+    "Items": [],
+    "ActiveItem": null,
+    "DeoVR": {
+      "AutoConnectEnabled": false,
+      "Endpoint": "127.0.0.1:23554"
+    },
+    "Emby": {
+      "AutoConnectEnabled": false,
+      "ServerBaseUri": "http://127.0.0.1:8096/",
+      "ApiKey": null,
+      "SelectedDevice": null
+    },
+    "HereSphere": {
+      "AutoConnectEnabled": false,
+      "Endpoint": "127.0.0.1:23554"
+    },
+    "Internal": {
+      "AutoConnectEnabled": false,
+      "IsShuffling": false,
+      "IsLooping": false,
+      "ScriptPlaylist": null
+    },
+    "Jellyfin": {
+      "AutoConnectEnabled": false,
+      "ServerBaseUri": "http://127.0.0.1:8096/",
+      "ApiKey": null,
+      "SelectedDevice": null
+    },
+    "MPC-HC": {
+      "AutoConnectEnabled": false,
+      "Endpoint": "127.0.0.1:13579"
+    },
+    "MPV": {
+      "AutoConnectEnabled": false,
+      "Executable": null,
+      "Arguments": "--keep-open --pause",
+      "AutoStartEnabled": true
+    },
+    "OFS": {
+      "AutoConnectEnabled": false,
+      "Uri": "ws://127.0.0.1:8080/ofs",
+      "ForceSeek": false
+    },
+    "Plex": {
+      "AutoConnectEnabled": false,
+      "ServerBaseUri": "http://127.0.0.1:32400",
+      "PlexToken": null,
+      "ClientIdentifier": "48dbca56-6501-4f02-a258-7bdeaf7d31c3",
+      "SelectedClient": null
+    },
+    "VLC": {
+      "AutoConnectEnabled": false,
+      "Endpoint": "127.0.0.1:8080",
+      "Password": null
+    },
+    "Whirligig": {
+      "AutoConnectEnabled": false,
+      "Endpoint": "127.0.0.1:2000"
+    }
+  }
+}
