@@ -1,0 +1,12 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "dashboard-evi": "~1.0.2",
+        "node-red-contrib-noxy": "~1.0.0",
+        "node-red-contrib-tapo-new-api": "~0.5.4",
+        "node-red-node-discord": "~2.2.0"
+    }
+}
