@@ -11,7 +11,7 @@
         "id": "675a23e0d48d3489",
         "type": "tab",
         "label": "OSR, SR6 & SSR1",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -32,27 +32,31 @@
         "env": []
     },
     {
-        "id": "mqtt_broker",
+        "id": "15376ac01e2f58cc",
         "type": "mqtt-broker",
-        "name": "Local MQTT",
-        "broker": "172.28.0.2",
-        "port": "1883",
-        "clientid": "NodeRed_Client",
+        "name": "Mosquitto",
+        "broker": "127.0.0.1",
+        "port": 1883,
+        "clientid": "",
         "autoConnect": true,
         "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
+        "protocolVersion": 4,
+        "keepalive": 60,
         "cleansession": true,
         "autoUnsubscribe": true,
         "birthTopic": "",
         "birthQos": "0",
+        "birthRetain": "false",
         "birthPayload": "",
         "birthMsg": {},
         "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
         "closePayload": "",
         "closeMsg": {},
         "willTopic": "",
         "willQos": "0",
+        "willRetain": "false",
         "willPayload": "",
         "willMsg": {},
         "userProps": "",
@@ -68,97 +72,38 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "generic001",
+                "v": "intro",
                 "vt": "str"
             },
             {
                 "t": "eq",
-                "v": "generic002",
+                "v": "open_NodeRed",
                 "vt": "str"
             },
             {
                 "t": "eq",
-                "v": "generic003",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "generic004",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "generic005",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "generic006",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "generic007",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "generic008",
+                "v": "open_Word",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 8,
+        "outputs": 3,
         "x": 420,
-        "y": 120,
+        "y": 180,
         "wires": [
             [
-                "13f00690f4831e53",
-                "27f30b929bcef5c2"
+                "685c2dc29eca0d60",
+                "10d2075129619935",
+                "354eb980688f8dc8"
             ],
             [
-                "13f00690f4831e53",
-                "4b131baf244052d1"
+                "f7c3738ee0b160c3"
             ],
             [
-                "13f00690f4831e53",
-                "5e4a57ad1b03db61"
-            ],
-            [
-                "13f00690f4831e53",
-                "e575f56dd6d461f3"
-            ],
-            [
-                "13f00690f4831e53",
-                "125c58e3708a72dc"
-            ],
-            [
-                "685c2dc29eca0d60"
-            ],
-            [
-                "2082c7af8480d909"
-            ],
-            [
-                "c8d961265c9d3870"
+                "6232d047276456fa"
             ]
         ]
-    },
-    {
-        "id": "13f00690f4831e53",
-        "type": "debug",
-        "z": "1595882e0f579de3",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 300,
-        "wires": []
     },
     {
         "id": "917754daa05e8196",
@@ -168,13 +113,13 @@
         "topic": "/noxyred/triggers",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
         "x": 180,
-        "y": 120,
+        "y": 140,
         "wires": [
             [
                 "871c41b82d42d34f"
@@ -182,34 +127,13 @@
         ]
     },
     {
-        "id": "125c58e3708a72dc",
-        "type": "function",
-        "z": "1595882e0f579de3",
-        "name": "Secret Example generic 005",
-        "func": "msg.payload = \"/secret generic005 has triggered a secret\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 980,
-        "y": 200,
-        "wires": [
-            [
-                "10546777ac1646e5",
-                "455d2d6d42deb9b8"
-            ]
-        ]
-    },
-    {
         "id": "a7d09e0b03e9a3c6",
         "type": "comment",
         "z": "1595882e0f579de3",
-        "name": "Check if status is connected",
+        "name": "2.) Check if status is connected. This is the Incomming Way, that we get the Actions from Voxta to Node-RED",
         "info": "",
-        "x": 160,
-        "y": 80,
+        "x": 370,
+        "y": 100,
         "wires": []
     },
     {
@@ -220,13 +144,13 @@
         "topic": "/noxyred/chat",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 126.05000305175781,
-        "y": 719.0499877929688,
+        "x": 146.0500030517578,
+        "y": 839.0499877929688,
         "wires": [
             [
                 "d2fa85da14da5e10"
@@ -245,8 +169,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 440,
-        "y": 720,
+        "x": 340,
+        "y": 840,
         "wires": []
     },
     {
@@ -266,8 +190,8 @@
         "topic": "",
         "payload": "SwitchChatTopic=false",
         "payloadType": "str",
-        "x": 142.00001525878906,
-        "y": 660,
+        "x": 150,
+        "y": 680,
         "wires": [
             [
                 "cd12fcfcfb6f778c"
@@ -287,9 +211,9 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
-        "x": 402.00001525878906,
-        "y": 660,
+        "broker": "15376ac01e2f58cc",
+        "x": 410,
+        "y": 680,
         "wires": []
     },
     {
@@ -298,15 +222,15 @@
         "z": "1595882e0f579de3",
         "name": "/noxyred/keys",
         "topic": "/noxyred/keys",
-        "qos": "",
-        "retain": "",
+        "qos": "2",
+        "retain": "false",
         "respTopic": "",
         "contentType": "",
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
-        "x": 1140,
+        "broker": "15376ac01e2f58cc",
+        "x": 1360,
         "y": 640,
         "wires": []
     },
@@ -327,7 +251,7 @@
         "topic": "",
         "payload": "[0x5B]",
         "payloadType": "str",
-        "x": 850,
+        "x": 1070,
         "y": 640,
         "wires": [
             [
@@ -352,7 +276,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 980,
+        "x": 1200,
         "y": 640,
         "wires": [
             [
@@ -361,30 +285,12 @@
         ]
     },
     {
-        "id": "10546777ac1646e5",
-        "type": "mqtt out",
-        "z": "1595882e0f579de3",
-        "name": "/noxyred/messages",
-        "topic": "/noxyred/messages",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "mqtt_broker",
-        "x": 1270,
-        "y": 120,
-        "wires": []
-    },
-    {
         "id": "9e806b2bbed87838",
         "type": "comment",
         "z": "1595882e0f579de3",
-        "name": "Enable Chat Output from Voxta into Noxy",
+        "name": "6.) Enable Chat Output from Voxta into Noxy (experimental)",
         "info": "",
-        "x": 220,
+        "x": 270,
         "y": 560,
         "wires": []
     },
@@ -392,104 +298,20 @@
         "id": "421c63f625aa162d",
         "type": "comment",
         "z": "1595882e0f579de3",
-        "name": "Example to send Windows Key after 2sec.",
+        "name": "7.) Example to send Windows Key after 2sec.",
         "info": "",
-        "x": 1020,
-        "y": 580,
+        "x": 1250,
+        "y": 560,
         "wires": []
-    },
-    {
-        "id": "e575f56dd6d461f3",
-        "type": "function",
-        "z": "1595882e0f579de3",
-        "name": "Note Example generic004",
-        "func": "msg.payload = \"/note generic004 has triggered a note\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 970,
-        "y": 160,
-        "wires": [
-            [
-                "10546777ac1646e5",
-                "2fa26ed76a50c6d8"
-            ]
-        ]
-    },
-    {
-        "id": "5e4a57ad1b03db61",
-        "type": "function",
-        "z": "1595882e0f579de3",
-        "name": "Chat Example generic003",
-        "func": "msg.payload = \"/char This is automated Text comming from Noxy-RED. If you read this, it means it works and the generic zero zero three Action has been triggered\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 970,
-        "y": 120,
-        "wires": [
-            [
-                "10546777ac1646e5",
-                "1bafa460869fc2fb"
-            ]
-        ]
-    },
-    {
-        "id": "4b131baf244052d1",
-        "type": "function",
-        "z": "1595882e0f579de3",
-        "name": "Event Example generic002",
-        "func": "msg.payload = \"/event generic002 has triggered a event, tell {{user}} that it works\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 980,
-        "y": 80,
-        "wires": [
-            [
-                "10546777ac1646e5",
-                "0ea76d7362144d7f"
-            ]
-        ]
-    },
-    {
-        "id": "27f30b929bcef5c2",
-        "type": "function",
-        "z": "1595882e0f579de3",
-        "name": "Flag Example generic001",
-        "func": "msg.payload = \"/setflags !second_action !third_action !forth_action !fifth_action\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 970,
-        "y": 40,
-        "wires": [
-            [
-                "10546777ac1646e5",
-                "8e38884131400f4e"
-            ]
-        ]
     },
     {
         "id": "ac4f6d84580ef7ed",
         "type": "comment",
         "z": "1595882e0f579de3",
-        "name": "debug nodes are used for troubleshooting",
+        "name": "8.) Debug nodes are used for troubleshooting",
         "info": "",
-        "x": 920,
-        "y": 260,
+        "x": 510,
+        "y": 800,
         "wires": []
     },
     {
@@ -498,88 +320,8 @@
         "z": "1595882e0f579de3",
         "name": "<- the green field is like a button you can toggle on and off",
         "info": "",
-        "x": 1070,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "8e38884131400f4e",
-        "type": "debug",
-        "z": "1595882e0f579de3",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1520,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "0ea76d7362144d7f",
-        "type": "debug",
-        "z": "1595882e0f579de3",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1520,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "1bafa460869fc2fb",
-        "type": "debug",
-        "z": "1595882e0f579de3",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1520,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "2fa26ed76a50c6d8",
-        "type": "debug",
-        "z": "1595882e0f579de3",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1520,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "455d2d6d42deb9b8",
-        "type": "debug",
-        "z": "1595882e0f579de3",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1520,
-        "y": 200,
+        "x": 650,
+        "y": 840,
         "wires": []
     },
     {
@@ -588,16 +330,16 @@
         "z": "1595882e0f579de3",
         "name": "/noxyred/soundeffecttopic",
         "topic": "/noxyred/soundeffecttopic",
-        "qos": "",
-        "retain": "",
+        "qos": "2",
+        "retain": "false",
         "respTopic": "",
         "contentType": "",
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 550,
-        "y": 480,
+        "y": 400,
         "wires": []
     },
     {
@@ -606,7 +348,7 @@
         "z": "1595882e0f579de3",
         "name": "Intro",
         "op1": "p_910",
-        "op2": "/char Ready to test Noxy-RED with me? I can trigger for your some actions to showcase their function, or play one of my favorite tune for you. Let me know!",
+        "op2": "/char Ready to test Noxy-RED with me?",
         "op1type": "str",
         "op2type": "str",
         "duration": "4",
@@ -634,79 +376,27 @@
         "z": "1595882e0f579de3",
         "name": "/noxyred/messages",
         "topic": "/noxyred/messages",
-        "qos": "",
-        "retain": "",
+        "qos": "2",
+        "retain": "false",
         "respTopic": "",
         "contentType": "",
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
-        "x": 550,
-        "y": 400,
+        "broker": "15376ac01e2f58cc",
+        "x": 530,
+        "y": 440,
         "wires": []
     },
     {
         "id": "89af93fa56b43e3b",
         "type": "comment",
         "z": "1595882e0f579de3",
-        "name": "Example to trigger a Soundeffect",
+        "name": "4.) Example to trigger a Soundeffect you heared",
         "info": "",
-        "x": 480,
+        "x": 530,
         "y": 360,
         "wires": []
-    },
-    {
-        "id": "2082c7af8480d909",
-        "type": "trigger",
-        "z": "1595882e0f579de3",
-        "name": "Music",
-        "op1": "p_915",
-        "op2": "0",
-        "op1type": "str",
-        "op2type": "str",
-        "duration": "4",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "s",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 2,
-        "x": 270,
-        "y": 440,
-        "wires": [
-            [
-                "49afab7e4edc6eee"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "c8d961265c9d3870",
-        "type": "trigger",
-        "z": "1595882e0f579de3",
-        "name": "stop",
-        "op1": "stop:p_915",
-        "op2": "0",
-        "op1type": "str",
-        "op2type": "str",
-        "duration": "4",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "s",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 2,
-        "x": 270,
-        "y": 480,
-        "wires": [
-            [
-                "49afab7e4edc6eee"
-            ],
-            []
-        ]
     },
     {
         "id": "cc8092fc8f672363",
@@ -725,8 +415,8 @@
         "topic": "",
         "payload": "SwitchChatTopic=true",
         "payloadType": "str",
-        "x": 140,
-        "y": 620,
+        "x": 147.99998474121094,
+        "y": 640,
         "wires": [
             [
                 "63efef2393a9cc22"
@@ -746,9 +436,9 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
-        "x": 400,
-        "y": 620,
+        "broker": "15376ac01e2f58cc",
+        "x": 407.99998474121094,
+        "y": 640,
         "wires": []
     },
     {
@@ -757,7 +447,7 @@
         "z": "1595882e0f579de3",
         "name": "Further examples:",
         "info": "[0x11, 0x30], // CTRL + 0\n[0x11, 0x41], // CTRL + A\n[0x11, 0x12, 0x2E], // CTRL + ALT + DEL\n\nOverview of the Virtual Key Codes:\nhttps://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes",
-        "x": 970,
+        "x": 1190,
         "y": 700,
         "wires": []
     },
@@ -767,7 +457,7 @@
         "z": "1595882e0f579de3",
         "name": "[0x11, 0x30], // CTRL + 0",
         "info": "",
-        "x": 990,
+        "x": 1210,
         "y": 740,
         "wires": []
     },
@@ -777,7 +467,7 @@
         "z": "1595882e0f579de3",
         "name": "[0x11, 0x41], // CTRL + A",
         "info": "",
-        "x": 990,
+        "x": 1210,
         "y": 780,
         "wires": []
     },
@@ -787,8 +477,363 @@
         "z": "1595882e0f579de3",
         "name": "[0x11, 0x12, 0x2E], // CTRL + ALT + DEL",
         "info": "",
-        "x": 1040,
+        "x": 1260,
         "y": 820,
+        "wires": []
+    },
+    {
+        "id": "36b5fa41ce838b1e",
+        "type": "voxta-context",
+        "z": "1595882e0f579de3",
+        "name": "Context Content",
+        "contexts": [
+            {
+                "Name": "Nodes",
+                "Text": "Nodes in Node-RED: Finding and Using Them\nWhere to Find Nodes in Node-RED\n\nNodes in Node-RED are found in the palette on the left side of the editor. The palette is categorized into different sections, such as input, output, function, and network nodes. You can drag and drop nodes from the palette into the flow workspace to create automation workflows.\nHow to Use Nodes (Drag and Drop)\n\n    Open Node-RED and access the editor.\n    Locate the palette on the left side.\n    Drag the desired node from the palette into the workspace.\n    Double-click on the node to configure its properties.\n    Connect nodes by dragging a wire from one node’s output to another node’s input.\n    Click Deploy to apply the changes and run the flow.\n\nSummary of Key Nodes\n\n    Inject Node (Input)\n        Manually triggers a flow at set intervals or on demand.\n        Can send timestamps, numbers, or specific payloads.\n\n    Debug Node (Output)\n        Displays messages in the debug panel for troubleshooting.\n        Useful for checking data flow and values in real-time.\n\n    Function Node (Processing)\n        Runs JavaScript code for custom logic and data manipulation.\n        Allows advanced processing of incoming messages.\n\n    Switch Node (Routing)\n        Directs messages based on conditions.\n        Works like an \"if-else\" statement to filter data.\n\n    Change Node (Modification)\n        Modifies message properties like payload or topic.\n        Can be used to set, delete, or move values.\n\n    Delay Node (Timing)\n        Adds a delay between message executions.\n        Helps manage flow timing and rate limits.\n\n    Trigger Node (Timing)\n        Sends a message on activation and optionally another after a delay.\n        Useful for setting timers or controlling repeating actions.\n\nThese nodes form the core building blocks of Node-RED workflows, allowing users to create powerful automation flows with minimal coding\n\nImportant: If the User Changes anything in the flow, adds or removes things, the red button on the top right corner will get red and is labeled Deploy. Only after a Deploy the changes will take affect..",
+                "Disabled": false,
+                "SetFlags": []
+            },
+            {
+                "Name": "Flows",
+                "Text": "What Are Flows in Node-RED?\n\nFlows in Node-RED are visual representations of automation workflows. They consist of interconnected nodes that process and route messages. Each flow is a self-contained logic sequence that can handle input, process data, and trigger actions.\n\nA flow typically includes:\n\n    Input Nodes – Start the process (e.g., Inject, MQTT).\n    Processing Nodes – Modify, filter, or analyze data (e.g., Function, Switch).\n    Output Nodes – Send results to destinations (e.g., Debug, HTTP, Database).\n\nFlows run continuously or on event triggers, enabling low-code automation in IoT, APIs, and system integrations.",
+                "Disabled": false,
+                "SetFlags": []
+            },
+            {
+                "Name": "CurrentFlows",
+                "Text": "The Current Flows that are visible are: Noxy RED api Tutorial. OSR, SR Six and SSR One for Stroker Based Toys. Lovense MAX Two for Vibration Toys and the last one is TP Ei 530 Smart Bulb for a demonstration for Home automatisation with a Actuall and affordable Lightbulb.",
+                "Disabled": false,
+                "SetFlags": []
+            },
+            {
+                "Name": "Debugging_Interface_Import_Export_Palette",
+                "Text": "Node-RED: Debugging, Web Interface, Import/Export, and Palette Overview\n1. Debug Panel (Right Side of Node-RED)\n\n    The Debug panel is on the right side of the Node-RED editor.\n    It displays messages from Debug nodes and system logs.\n    To access it, click on the bug icon in the top-right corner.\n    Useful for troubleshooting and monitoring message payloads.\n    To display Payloads, you have to attach a Debug node to the node you want to test.\n\n\n2. Accessing the Web Interface (Frontend)\n\n    The Node-RED web interface runs on a web browser, Currently {{user}} should seeing the backend, that is where the logic gets created. If one presses on the little triangle icon in the top right area, we can also access a dashboard. that dashboard can be used to create a interface with buttons, sliders and display information.\n    \n\n3. Importing and Exporting Flows & Nodes (JSON Format)\n\n    Exporting Flows:\n        Click the menu, the three horizonal lines in the top right corner and then Export.\n        Select the flow or nodes you want to export.\n        Copy or download the generated JSON file.\n\n    Importing Flows:\n         Click the menu, the three horizonal lines in the top right corner and then Import.\n        Paste JSON data or upload a JSON file.\n        Click \"Import\", then place it in the workspace and Deploy.\n\n    JSON imports allow sharing and reusing flows across Node-RED instances.\n\n4. Palette and Installing Additional Nodes\n\n    The Palette (left side) contains available nodes for building flows.\n    To install additional nodes:\n        Click the menu, the three horizonal lines in the top right corner and thenManage palette.\n        Go to the Install tab.\n        Search for new nodes (e.g., MQTT, Dashboard).\n        Click Install to add them to Node-RED.\n    The palette allows customization and extension of Node-RED’s functionality.",
+                "Disabled": false,
+                "SetFlags": []
+            },
+            {
+                "Name": "Voxta_Custom_Nodes",
+                "Text": "A collection of custom Node-RED nodes designed for easy integration between Voxta and Node-RED. This pack includes:\n\n    Voxta Actions: Register actions with Voxta.\n    Voxta Messages: Send messages to Voxta.\n    Voxta Keys: Send VK formatted instructions for triggering local keystrokes.\n    Noxy Sequencer: Create a sequence of events with or without fixed or random delays that can be stopped and reset at any time.\n    Voxta Context: Manage context entries dynamically for Voxta.\n\nSeamless integration of Voxta logic into Node-RED, allowing users to graphically create and manage actions, messages, and keystroke events. When combined with Noxy-Red, these nodes facilitate rich interactions between Voxta and the local system through MQTT.\n\nThe Voxta Actions node allows users to register actions with Voxta, such as commands to be executed at various stages of a conversation.\n\n    Action Registration: Add, modify, or remove actions.\n    Default Values: Choose from common action triggers like \"AfterUserMessage\", \"BeforeAssistantMessage\", etc.\n    Multi-Select for Arrays: Add multiple options for actions, including dynamic add/remove functionality.\n\nThe Voxta Messages node allows users to send text messages back to Voxta from within Node-RED.\n\n    Message Types: Send back user-defined messages, which Voxta can process.\n    Short References: Use short references for easy recall and linking of multiple messages.\n\nThe Voxta Keys node is used to send VK (Virtual Key) formatted instructions to noxy-red.api to trigger keystrokes on the machine running Noxy-Red. This is especially useful for triggering local system interactions based on inputs to Voxta.\n\n    Virtual Key Mapping: Map incoming text or number payloads to virtual keys, including modifier keys (CTRL, ALT, SHIFT).\n    Use Case: Ideal for simulation games or automation environments where inputs need to trigger specific keystrokes.\n\nThe Noxy Sequencer node is designed to sequentially execute a series of actions with optional delays, providing a simple yet powerful way to automate tasks in a defined order. It is particularly useful for applications requiring a timed sequence of operations, such as controlling devices, triggering multiple actions, or introducing delays between outputs. Features:\n\nSequential Execution: The node processes each element in the defined sequence, executing them one by one, until the end is reached.\n\nConfigurable Elements:\n\n    Output Action: Sends a specified message to the output. Use a switch node to route the \"output\" action as needed.\n\n    You can configure the output type as a string, number, boolean, or JSON.\n\n    The value to be sent can also be customized, making it flexible for various use cases.\n\n    Delay Action: Introduces a delay before moving on to the next action.\n\n    The delay can be fixed (e.g., 3 seconds) or set to a random range (e.g., between 2 and 5 seconds).\n\n    Time units available are milliseconds (ms), seconds (s), or minutes (min).\n\nStop Functionality:\n\n    If the sequencer receives a message payload of \"stop!\", the current sequence is immediately terminated, and the node resets to the beginning.\n    This is useful for stopping a sequence mid-execution, effectively resetting the state.\n\n\nThe Voxta Context node allows users to dynamically manage context entries within Voxta. It provides the ability to add, remove, and modify context values based on input messages.\n\n    Triggering the Node:\n        Sending a message with a payload containing the context name will activate and send that context.\n        If the context name ends with an exclamation mark it will be marked as disabled.\n        Otherwise, it will be enabled and is visible by Voxta.",
+                "Disabled": false,
+                "SetFlags": []
+            },
+            {
+                "Name": "Access_Web_APP",
+                "Text": "{{char}} can open if requested Word and also the Node Red Interface, in case {{user}} likes a demonstration or asks how to access Node Red or How to change things in the logic, {{char}} will open node red. Only mention it otherwise but don't perform the action inference, like this:\n\"I can open the Node Red Interface in your Webbrowser, would you like me to do that now?\"",
+                "Disabled": false,
+                "SetFlags": []
+            }
+        ],
+        "x": 1340,
+        "y": 140,
+        "wires": [
+            [
+                "57479f0c3f1639ae"
+            ]
+        ]
+    },
+    {
+        "id": "57479f0c3f1639ae",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "Dynamical Context Injection into Voxta",
+        "topic": "/noxyred/context",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1710,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "10d2075129619935",
+        "type": "noxy-sequencer",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "sequence": [
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "Nodes"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "Flows"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "CurrentFlows"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "Voxta_Custom_Nodes"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "Access_Web_APP"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "Debugging_Interface_Import_Export_Palette"
+            }
+        ],
+        "outputs": 1,
+        "outputLabels": [
+            ""
+        ],
+        "x": 1060,
+        "y": 140,
+        "wires": [
+            [
+                "36b5fa41ce838b1e"
+            ]
+        ]
+    },
+    {
+        "id": "f7c3738ee0b160c3",
+        "type": "function",
+        "z": "1595882e0f579de3",
+        "name": "function 1",
+        "func": "// Create the MQTT message payload\nmsg.payload = {\n    \"Type\": \"web\",\n    \"Value\": \"http://localhost:1880\"\n};\n\n// Convert the object to a JSON string\nmsg.payload = JSON.stringify(msg.payload);\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 300,
+        "wires": [
+            [
+                "1b7c36ac80122f43"
+            ]
+        ]
+    },
+    {
+        "id": "1b7c36ac80122f43",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "/noxyred/app",
+        "topic": "/noxyred/app",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1310,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6232d047276456fa",
+        "type": "function",
+        "z": "1595882e0f579de3",
+        "name": "function 2",
+        "func": "// Create the MQTT message payload\nmsg.payload = {\n    \"Type\": \"app\",\n    \"Value\": \"winword.exe\"\n};\n\n// Convert the object to a JSON string\nmsg.payload = JSON.stringify(msg.payload);\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 340,
+        "wires": [
+            [
+                "1b7c36ac80122f43"
+            ]
+        ]
+    },
+    {
+        "id": "4a5570d76c709b7d",
+        "type": "voxta-actions",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "index": 1,
+        "actions": [
+            {
+                "name": "open_NodeRed",
+                "description": "when {{user}} asks to open the webinterface of Noxy-RED",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "open_Word",
+                "description": "after {{user}} asks to open word or asks for a demonstation to start a application",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            }
+        ],
+        "x": 1330,
+        "y": 180,
+        "wires": [
+            [
+                "01621cbe008225a5"
+            ]
+        ]
+    },
+    {
+        "id": "354eb980688f8dc8",
+        "type": "noxy-sequencer",
+        "z": "1595882e0f579de3",
+        "name": "",
+        "sequence": [
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "open_NodeRed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "open_Word"
+            }
+        ],
+        "outputs": 1,
+        "outputLabels": [
+            ""
+        ],
+        "x": 1060,
+        "y": 180,
+        "wires": [
+            [
+                "4a5570d76c709b7d"
+            ]
+        ]
+    },
+    {
+        "id": "01621cbe008225a5",
+        "type": "mqtt out",
+        "z": "1595882e0f579de3",
+        "name": "Dynamical Action Injection into Voxta",
+        "topic": "/noxyred/actions",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1710,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f98b7b8b32d37006",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "5.) Call up a Website or open an application",
+        "info": "",
+        "x": 1140,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "0baa016964ad1991",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "3.) How to register Context and Actions",
+        "info": "",
+        "x": 1110,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d2ef26e85b8297a0",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "Could be used for TTS Enpoints or Discord/Telegram forward/capture",
+        "info": "",
+        "x": 300,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "8d73142f1845c524",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "We controll the Multifunplayer via Keystrokes in this manner",
+        "info": "",
+        "x": 1290,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "51636528ba7052ed",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "1.) Above this are the tabs. The grayed-out ones are inactive. Right-click on the tab and enable it to use it.",
+        "info": "",
+        "x": 410,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "09e82d6b8ffd9947",
+        "type": "comment",
+        "z": "1595882e0f579de3",
+        "name": "You can ask Noxy to open the Interface (this here you see) or open Word (if you got it installed)",
+        "info": "",
+        "x": 1180,
+        "y": 380,
         "wires": []
     },
     {
@@ -931,7 +976,7 @@
         "topic": "/noxyred/triggers",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -950,14 +995,14 @@
         "z": "675a23e0d48d3489",
         "name": "/noxyred/keys",
         "topic": "/noxyred/keys",
-        "qos": "",
-        "retain": "",
+        "qos": "2",
+        "retain": "false",
         "respTopic": "",
         "contentType": "",
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1520,
         "y": 80,
         "wires": []
@@ -970,7 +1015,7 @@
         "topic": "/noxyred/vam",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -1006,7 +1051,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1590,
         "y": 640,
         "wires": []
@@ -1024,7 +1069,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1590,
         "y": 820,
         "wires": []
@@ -1248,7 +1293,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1590,
         "y": 860,
         "wires": []
@@ -1297,7 +1342,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1590,
         "y": 440,
         "wires": []
@@ -1389,14 +1434,14 @@
         "z": "675a23e0d48d3489",
         "name": "/noxyred/messages",
         "topic": "/noxyred/messages",
-        "qos": "",
-        "retain": "",
+        "qos": "2",
+        "retain": "false",
         "respTopic": "",
         "contentType": "",
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1530,
         "y": 280,
         "wires": []
@@ -1604,7 +1649,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1530,
         "y": 180,
         "wires": []
@@ -1729,7 +1774,7 @@
         "topic": "/noxyred/triggers",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -1884,7 +1929,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1360,
         "y": 440,
         "wires": []
@@ -1998,7 +2043,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1370,
         "y": 120,
         "wires": []
@@ -2043,7 +2088,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1370,
         "y": 360,
         "wires": []
@@ -2422,7 +2467,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1430,
         "y": 400,
         "wires": []
@@ -2455,7 +2500,7 @@
         "topic": "/noxyred/vam",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -2770,7 +2815,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1130,
         "y": 520,
         "wires": []
@@ -2783,12 +2828,12 @@
         "topic": "/noxyred/triggers",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 320,
+        "x": 340,
         "y": 260,
         "wires": [
             [
@@ -2809,7 +2854,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "mqtt_broker",
+        "broker": "15376ac01e2f58cc",
         "x": 1130,
         "y": 680,
         "wires": []
