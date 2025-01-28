@@ -4,7 +4,7 @@
     "MultiFunPlayer.Input.RawInput.*": "Trace",
     "MultiFunPlayer.Input.XInput.*": "Trace"
   },
-  "ConfigVersion": 41,
+  "ConfigVersion": 43,
   "Devices": [
     {
       "Name": "TCode-0.2",
@@ -390,8 +390,8 @@
         "$type": "MultiFunPlayer.MotionProvider.ViewModels.PatternMotionProvider, MultiFunPlayer",
         "Pattern": "Sine",
         "Speed": 2.0,
-        "Minimum": 0.7,
-        "Maximum": 0.8
+        "Minimum": 0.0,
+        "Maximum": 0.0
       },
       {
         "$type": "MultiFunPlayer.MotionProvider.ViewModels.RandomMotionProvider, MultiFunPlayer",
