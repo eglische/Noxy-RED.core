@@ -68,7 +68,15 @@ if "%choice%"=="1" (
     powershell -NoProfile -ExecutionPolicy Bypass -Command ^
     "Start-Process -Verb RunAs powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"%script_dir%bin\ProviderAPP\dependencies.ps1\"'"
     echo.
-    echo Installation complete. Press Enter to close this window.
+    echo Installation complete. Press Enter to continue.
+    pause
+
+    :: Copy contents of "nodered" folder to user's .node-red folder
+    echo Copying Node-RED configuration files...
+    powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+    "$source='%script_dir%nodered'; $dest='$env:USERPROFILE\.node-red'; if (Test-Path $source) { Copy-Item -Path $source\* -Destination $dest -Recurse -Force; Write-Host 'Files copied successfully.' } else { Write-Host 'Source folder does not exist, skipping.' }"
+    
+    echo Node-RED files have been copied to %USERPROFILE%\.node-red.
     pause
 )
 

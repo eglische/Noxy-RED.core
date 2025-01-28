@@ -263,8 +263,5 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.Environ
 Install-Mosquitto
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
 Install-NodeRed
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
-Import-NodeRedConfig
-
 Write-Host "Installation Complete! You can now start using Node-RED and Mosquitto." -ForegroundColor Cyan
 Stop-Transcript
