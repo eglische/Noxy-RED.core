@@ -74,7 +74,8 @@ if "%choice%"=="1" (
     :: Copy contents of "nodered" folder to user's .node-red folder
     echo Copying Node-RED configuration files...
     powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "$source='%script_dir%nodered'; $dest='$env:USERPROFILE\.node-red'; if (Test-Path $source) { Copy-Item -Path $source\* -Destination $dest -Recurse -Force; Write-Host 'Files copied successfully.' } else { Write-Host 'Source folder does not exist, skipping.' }"
+"$source='%script_dir%nodered'; $dest=[System.IO.Path]::Combine($env:USERPROFILE, '.node-red'); if (Test-Path $source) { Copy-Item -Path $source\* -Destination $dest -Recurse -Force; Write-Host 'Files copied successfully.' } else { Write-Host 'Source folder does not exist, skipping.' }"
+
     
     echo Node-RED files have been copied to %USERPROFILE%\.node-red.
     pause
