@@ -65,20 +65,26 @@ if "%result%"=="y" (
 :: If Local is chosen, run dependencies setup
 if "%choice%"=="1" (
     echo Starting Local installation setup...
-    powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "Start-Process -Verb RunAs powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"%script_dir%bin\ProviderAPP\dependencies.ps1\"'"
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+"Start-Process -Verb RunAs -FilePath 'powershell.exe' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"%script_dir%bin\\ProviderAPP\\dependencies.ps1\"' -Wait"
+
     echo.
     echo Installation complete. Press Enter to continue.
     pause
 
     :: Copy contents of "nodered" folder to user's .node-red folder
-    echo Copying Node-RED configuration files...
-    powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-"$source='%script_dir%nodered'; $dest=[System.IO.Path]::Combine($env:USERPROFILE, '.node-red'); if (Test-Path $source) { Copy-Item -Path $source\* -Destination $dest -Recurse -Force; Write-Host 'Files copied successfully.' } else { Write-Host 'Source folder does not exist, skipping.' }"
+echo Copying Node-RED configuration files...
 
-    
+xcopy "%script_dir%nodered\*" "%USERPROFILE%\.node-red\" /E /H /C /I /Y
+
+if %errorlevel% equ 0 (
     echo Node-RED files have been copied to %USERPROFILE%\.node-red.
-    pause
+) else (
+    echo Failed to copy Node-RED files. Please check permissions or source folder existence.
+)
+
+pause
+
 )
 
 :: Ask if the user wants to install MultiFunPlayer
