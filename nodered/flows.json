@@ -10,7 +10,7 @@
     {
         "id": "675a23e0d48d3489",
         "type": "tab",
-        "label": "OSR, SR6 & SSR1",
+        "label": "Sex Toys Strokes",
         "disabled": true,
         "info": "",
         "env": []
@@ -18,7 +18,7 @@
     {
         "id": "3d963a7e271e08c2",
         "type": "tab",
-        "label": "Lovense max2 (Vib & Contraction)",
+        "label": "Sex Toys Vibration",
         "disabled": true,
         "info": "",
         "env": []
@@ -501,7 +501,7 @@
             },
             {
                 "Name": "CurrentFlows",
-                "Text": "The currently visible flows in Node-RED are: Noxy RED API Tutorial, OSR, SR Six, SSR One (for stroker-based toys), Lovense MAX Two (for vibration toys), and TP Ei 530 Smart Bulb, which serves as a demonstration for home automation with an affordable and functional lightbulb.\n\nFlows can be either active or deactivated. When a flow is active, it gets processed and functions as expected. If it is deactivated, Voxta cannot access its logic. To change the state of a flow, right-click on its tab and select either Activate or Deactivate accordingly.",
+                "Text": "The currently visible flows in Node-RED are: Noxy RED Tutorial which is active, Sex Toys Strokes which is inactive, Sex Toys Vibration which is also inactive, and TP Ei 530 Smart Bulb which again, is inactive. The later one serves as a demonstration for home automation with an affordable and functional lightbulb.\n\nFlows can be either active or deactivated. When a flow is active, it gets processed and functions as expected. If it is deactivated, Voxta cannot access its logic. To change the state of a flow, right-click on its tab and select either Activate or Deactivate accordingly.",
                 "Disabled": false,
                 "SetFlags": []
             },
@@ -525,7 +525,7 @@
             },
             {
                 "Name": "How_to_get_stimulated",
-                "Text": "After the Initial Installation, All tabs but the Noxy-RED Tutorial are greyed out. If {{user}} wants to use either Stroke based Sex Toys or Vibrating one, he needs first to setup his Toy in the Multifunplayer. The Application has a Shortcut on the desktop, and in addition to that, it gets started every time Noxy Core is started. There he needs to interface with Buttplug.io. Once this works and is connected, {{user}} can Activate one of the two tabs in Node-Red. The first one is for Stroker, the second after that is for Vibration Toys.",
+                "Text": "After the Initial Installation, All tabs but the Noxy-RED Tutorial are greyed out. If {{user}} wants to use either Stroke based Sex Toys or Vibrating one, he needs first to setup his Toy in the Multifunplayer. The Application has a Shortcut on the desktop, and in addition to that, it gets started every time Noxy Core is started. There he needs to interface with Buttplug.io. Once this works and is connected, {{user}} can Activate one of the two tabs in Node-Red. The first one is for Stroker, the second after that is for Vibration Toys.\n\nImportant: In Node-Red, the Tutorial Flow needs to be de-activated, and the correspoding Flow for Strokes or Vibration Activated.",
                 "Disabled": false,
                 "SetFlags": []
             }
