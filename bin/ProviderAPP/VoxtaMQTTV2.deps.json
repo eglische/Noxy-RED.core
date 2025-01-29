@@ -444,11 +444,10 @@
           "NAudio.Core": "2.2.1",
           "NAudio.Midi": "2.2.1",
           "NAudio.Wasapi": "2.2.1",
-          "NAudio.WinForms": "2.2.1",
           "NAudio.WinMM": "2.2.1"
         },
         "runtime": {
-          "lib/net6.0-windows7.0/NAudio.dll": {
+          "lib/net6.0/NAudio.dll": {
             "assemblyVersion": "2.2.1.0",
             "fileVersion": "2.2.1.0"
           }
@@ -491,17 +490,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/NAudio.Wasapi.dll": {
-            "assemblyVersion": "2.2.1.0",
-            "fileVersion": "2.2.1.0"
-          }
-        }
-      },
-      "NAudio.WinForms/2.2.1": {
-        "dependencies": {
-          "NAudio.WinMM": "2.2.1"
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/NAudio.WinForms.dll": {
             "assemblyVersion": "2.2.1.0",
             "fileVersion": "2.2.1.0"
           }
@@ -952,13 +940,6 @@
       "sha512": "sha512-lFfXoqacZZe0WqNChJgGYI+XV/n/61LzPHT3C1CJp4khoxeo2sziyX5wzNYWeCMNbsWxFvT3b3iXeY1UYjBhZw==",
       "path": "naudio.wasapi/2.2.1",
       "hashPath": "naudio.wasapi.2.2.1.nupkg.sha512"
-    },
-    "NAudio.WinForms/2.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-DlDkewY1myY0A+3NrYRJD+MZhZV0yy1mNF6dckB27IQ9XCs/My5Ip8BZcoSHOsaPSe2GAjvoaDnk6N9w8xTv7w==",
-      "path": "naudio.winforms/2.2.1",
-      "hashPath": "naudio.winforms.2.2.1.nupkg.sha512"
     },
     "NAudio.WinMM/2.2.1": {
       "type": "package",
