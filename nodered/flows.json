@@ -924,7 +924,7 @@
             },
             {
                 "t": "eq",
-                "v": "start_chat",
+                "v": "intro",
                 "vt": "str"
             },
             {
@@ -1726,64 +1726,6 @@
         ]
     },
     {
-        "id": "6b3cd9963dfec89a",
-        "type": "inject",
-        "z": "675a23e0d48d3489",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 500,
-        "y": 500,
-        "wires": [
-            [
-                "55b5b8e6b72c882b"
-            ]
-        ]
-    },
-    {
-        "id": "06a3f8136873d9d4",
-        "type": "inject",
-        "z": "675a23e0d48d3489",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "faster",
-        "payloadType": "str",
-        "x": 510,
-        "y": 80,
-        "wires": [
-            [
-                "5c3e559946fd54c3"
-            ]
-        ]
-    },
-    {
         "id": "f98ed4f6cae7a6d1",
         "type": "mqtt in",
         "z": "3d963a7e271e08c2",
@@ -1814,7 +1756,7 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "chat_start",
+                "v": "intro",
                 "vt": "str"
             },
             {
@@ -2975,7 +2917,7 @@
             },
             {
                 "t": "eq",
-                "v": "chat_start",
+                "v": "intro",
                 "vt": "str"
             }
         ],
