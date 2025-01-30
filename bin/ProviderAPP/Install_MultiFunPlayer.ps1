@@ -41,16 +41,26 @@ if ($candidates.Count -eq 0) {
     exit 1
 }
 
-# Sort candidates by the latest published release
+# Sort candidates by the latest published release (for display purposes)
 $candidates = $candidates | Sort-Object -Property PublishedAt -Descending
 
 Write-Host "Available SelfContained releases:"
 $candidates | Format-Table -AutoSize
 
-# Pick the latest release
-$selectedCandidate = $candidates[0]
+# We want to install exactly tag_name "1.30.2"
+$versionToInstall = "1.30.2"
 
-Write-Host "`nSelected Release: $($selectedCandidate.ReleaseName)"
+# Try to find that specific release
+$selectedCandidate = $candidates | Where-Object { $_.TagName -eq $versionToInstall } | Select-Object -First 1
+
+if (!$selectedCandidate) {
+    Write-Host "`nERROR: No MultiFunPlayer SelfContained release with tag_name '$versionToInstall' found!"
+    Write-Host "Press Enter to exit..."
+    Read-Host | Out-Null
+    exit 1
+}
+
+Write-Host "`nSelected Release: $($selectedCandidate.ReleaseName) (tag_name: $($selectedCandidate.TagName))"
 
 # Check if the ZIP already exists
 if (Test-Path $zipPath) {

@@ -1,0 +1,1002 @@
+[
+    {
+        "id": "675a23e0d48d3489",
+        "type": "tab",
+        "label": "Sex Toys Strokes",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b0407f39b2f5e412",
+        "type": "switch",
+        "z": "675a23e0d48d3489",
+        "name": "Action Routing",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "intro",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "chat_start_stroke",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "chat_start_stroketwist",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "55b5b8e6b72c882b"
+            ],
+            [
+                "05060ef90bdfc1d1",
+                "5af6a44d5f90d71c",
+                "9c889129f701ac3d",
+                "b16a856fbd49b55b"
+            ],
+            [
+                "05060ef90bdfc1d1",
+                "6f5e29d4de152f8c",
+                "4a1e886d74c69bae",
+                "9c889129f701ac3d"
+            ]
+        ]
+    },
+    {
+        "id": "9295f83a2bed0201",
+        "type": "mqtt in",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "topic": "/noxyred/triggers",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "15376ac01e2f58cc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "b0407f39b2f5e412",
+                "e17d375c366e629a"
+            ]
+        ]
+    },
+    {
+        "id": "3c79518818f8ca0e",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "/noxyred/keyboard",
+        "topic": "/noxyred/keyboard",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1490,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "64c8422f639239f4",
+        "type": "mqtt in",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "topic": "/noxyred/vam",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "15376ac01e2f58cc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "b0407f39b2f5e412",
+                "e17d375c366e629a"
+            ]
+        ]
+    },
+    {
+        "id": "ace48255255481ad",
+        "type": "comment",
+        "z": "675a23e0d48d3489",
+        "name": "This Example is for Linear Movements / Strokes",
+        "info": "",
+        "x": 260,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "363d7b48c2087283",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "Dynamical Action Injection into Voxta",
+        "topic": "/noxyred/actions",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1590,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "727c3155099955ab",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "Dynamical Context Injection into Voxta",
+        "topic": "/noxyred/context",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1590,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "5af6a44d5f90d71c",
+        "type": "voxta-context",
+        "z": "675a23e0d48d3489",
+        "name": "Context Injection",
+        "contexts": [
+            {
+                "Name": "stroker",
+                "Text": "{{char}} controls now a stroker robot sextoy and will begin to please {{user}} with it. it will stroke {{user}} and sexually pleasure him. {{char}} can incrementally increase or decrease the speed of the strokes, by going faster or slower. in addition to that, {{char}} can also choose random speeds: speedslow, speedmedium and speedfast.",
+                "Disabled": false,
+                "SetFlags": []
+            },
+            {
+                "Name": "stroke_speeds",
+                "Text": "the sex toy has 6 speed settings: pause which stops the aciton, tease is very slow, slow strokes, average strokes, fast strokes, aggressive strolkes and the very fast edge speed. it is best to mix up the stroke length for the faster speeds, unless {{char}} wants {{user}} to reach climax. in that case, full strokes are the best way to go.",
+                "Disabled": false,
+                "SetFlags": []
+            }
+        ],
+        "x": 1060,
+        "y": 820,
+        "wires": [
+            [
+                "727c3155099955ab"
+            ]
+        ]
+    },
+    {
+        "id": "022aabd5f0653fef",
+        "type": "voxta-actions",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "index": 1,
+        "actions": [
+            {
+                "name": "pause",
+                "description": "when {{char}} wants to pause the stroker",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "twiston",
+                "description": "when {{char}} wants to enable the twist function on the stroker",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "twistoff",
+                "description": "when {{char}} wants to disable the twist function on the stroker",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "just_the_head",
+                "description": "when {{char}} wants to stimulate only the head of {{user}} cock, limiting the stroke length to just the tip",
+                "layer": "stroke_depth",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "full_stroke",
+                "description": "when {{char}} wants to stimulate the full length of {{user}} cock going from tip to base",
+                "layer": "stroke_depth",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "just_the_base",
+                "description": "when {{char}} wants to stimulate only the base of {{user}} cock, clinching down on him like a deepthroat",
+                "layer": "stroke_depth",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "tease_speed",
+                "description": "when {{char}} wants to slowly tease {{user}} with very slow strokes, best used with the full stroke length",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "tease speed is best used with full stroke length to really get him wanting while talking lewd and provocative",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "slow_strokes_speed",
+                "description": "when {{char}} wants to slowly stroke {{user}} up and down. best used together with full strokes to really get him wanting",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "slow strokes are best used together with full stroke length to really get him wanting",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "average_strokes_speed",
+                "description": "when {{char}} wants to stroke {{user}} faster than just teasing him. perfect to build up anticipation and arrousal. perfect to switch between full length strokes and base strokes to simulate a deepthroat.",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "fast_stroke_speed",
+                "description": "when {{char}} wants to stimulate {{user}} with fast strokes",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "aggressive_stroke_speed",
+                "description": "when {{char}} wants to stimulate {{user}} with aggressive strokes, goes perfect together with a mix between full length strokes and just the tip",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "edge_speed",
+                "description": "when {{char}} wants to go very fast and edge {{user}} to build up his climax. best to be used with full strokes lenght, and reduce speed again after a while to make him desperate",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            }
+        ],
+        "x": 1290,
+        "y": 640,
+        "wires": [
+            [
+                "363d7b48c2087283"
+            ]
+        ]
+    },
+    {
+        "id": "d9112fb0f74f6fec",
+        "type": "comment",
+        "z": "675a23e0d48d3489",
+        "name": "Injecting inicial Actions",
+        "info": "",
+        "x": 1080,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "7227b045c47b9534",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "Dynamical Context Injection into Voxta",
+        "topic": "/noxyred/context",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1590,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "6f5e29d4de152f8c",
+        "type": "voxta-context",
+        "z": "675a23e0d48d3489",
+        "name": "Context Injection",
+        "contexts": [
+            {
+                "Name": "stroker_with_twist",
+                "Text": "{{char}} controls now a stroker robot sextoy and will begin to please {{user}} with it. it will stroke {{user}} and sexually pleasure him. In addition to stroking his cock, {{char}} can also enable the machine to twist around his cock while it goes up and down, increasing the pleasure even further. {{char}} can incrementally increase or decrease the speed of the strokes, by going faster or slower. in addition to that, {{char}} can also choose random speeds: speedslow, speedmedium and speedfast.",
+                "Disabled": false,
+                "SetFlags": []
+            }
+        ],
+        "x": 1060,
+        "y": 860,
+        "wires": [
+            [
+                "7227b045c47b9534"
+            ]
+        ]
+    },
+    {
+        "id": "dc0a7a3484a7f113",
+        "type": "comment",
+        "z": "675a23e0d48d3489",
+        "name": "Injecting Context",
+        "info": "",
+        "x": 1060,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "afca23e23f998e3d",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "Dynamical Action Injection into Voxta",
+        "topic": "/noxyred/actions",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1590,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a0d3fbbea20cee40",
+        "type": "voxta-actions",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "index": 1,
+        "actions": [
+            {
+                "name": "chat_start_stroketwist",
+                "description": "when {{char}} has been told that {{user}} has a sex toy that can stroke and twist",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            },
+            {
+                "name": "chat_start_stroke",
+                "description": "when {{char}} has been told that {{user}} has a sex toy that only strokes",
+                "layer": "default",
+                "timing": "AfterAssistantMessage",
+                "setFlags": [],
+                "secret": "",
+                "note": "",
+                "cancelReply": false
+            }
+        ],
+        "x": 1290,
+        "y": 440,
+        "wires": [
+            [
+                "afca23e23f998e3d"
+            ]
+        ]
+    },
+    {
+        "id": "3dced740b31dddc4",
+        "type": "noxy-sequencer",
+        "z": "675a23e0d48d3489",
+        "name": "Add Actions",
+        "sequence": [
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "chat_start_stroke"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "chat_start_stroketwist"
+            }
+        ],
+        "outputs": 1,
+        "outputLabels": [
+            ""
+        ],
+        "x": 1050,
+        "y": 440,
+        "wires": [
+            [
+                "a0d3fbbea20cee40"
+            ]
+        ]
+    },
+    {
+        "id": "9b600937725194b1",
+        "type": "comment",
+        "z": "675a23e0d48d3489",
+        "name": "Initial Question / Setup",
+        "info": "",
+        "x": 1080,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "55b5b8e6b72c882b",
+        "type": "delay",
+        "z": "675a23e0d48d3489",
+        "name": "Delay for Chat Init",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 320,
+        "wires": [
+            [
+                "3dced740b31dddc4",
+                "4bd1f84278114556",
+                "6c0d753ee967209c"
+            ]
+        ]
+    },
+    {
+        "id": "05060ef90bdfc1d1",
+        "type": "noxy-sequencer",
+        "z": "675a23e0d48d3489",
+        "name": "Remove Actions",
+        "sequence": [
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "chat_start_stroke!"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "chat_start_stroketwist!"
+            }
+        ],
+        "outputs": 1,
+        "outputLabels": [
+            ""
+        ],
+        "x": 1060,
+        "y": 480,
+        "wires": [
+            [
+                "a0d3fbbea20cee40"
+            ]
+        ]
+    },
+    {
+        "id": "4a1e886d74c69bae",
+        "type": "noxy-sequencer",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "sequence": [
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "pause"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "twiston"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "twistoff"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "tease_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "slow_strokes_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "average_strokes_sleep"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "fast_stroke_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "aggressive_stroke_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "edge_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "full_stroke"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "just_the_base"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "just_the_head"
+            }
+        ],
+        "outputs": 1,
+        "outputLabels": [
+            ""
+        ],
+        "x": 1060,
+        "y": 680,
+        "wires": [
+            [
+                "022aabd5f0653fef"
+            ]
+        ]
+    },
+    {
+        "id": "3db4de9817349733",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "/noxyred/autoreply",
+        "topic": "/noxyred/autoreply",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1490,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "4bd1f84278114556",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "set autoreply off for the question",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1210,
+        "y": 240,
+        "wires": [
+            [
+                "3db4de9817349733"
+            ]
+        ]
+    },
+    {
+        "id": "9c889129f701ac3d",
+        "type": "change",
+        "z": "675a23e0d48d3489",
+        "name": "set autoreply to 20sec",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "20000",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1240,
+        "y": 280,
+        "wires": [
+            [
+                "3db4de9817349733"
+            ]
+        ]
+    },
+    {
+        "id": "6c0d753ee967209c",
+        "type": "voxta-messages",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "index": 1,
+        "messages": [
+            {
+                "flag": "event",
+                "eventName": "intro",
+                "shortRef": "intro",
+                "content": "{{char}} will ask first what type of stroker is used, either only strokes or stroke and twist module, meaning, if twist is aviable, while beeing stroked the sleeve will also turn while stroking {{user}} shaft. be specific in your question because it is a technical detail important. respond to either answer positive and playfull",
+                "additionalMessages": []
+            }
+        ],
+        "x": 1260,
+        "y": 320,
+        "wires": [
+            [
+                "e71c27fb872037f2"
+            ]
+        ]
+    },
+    {
+        "id": "e71c27fb872037f2",
+        "type": "mqtt out",
+        "z": "675a23e0d48d3489",
+        "name": "Dynamical Message Injection into Voxta",
+        "topic": "/noxyred/messages",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15376ac01e2f58cc",
+        "x": 1600,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e17d375c366e629a",
+        "type": "function",
+        "z": "675a23e0d48d3489",
+        "name": "Keymapping",
+        "func": "// Maps action trigger messages to VK codes for CTRL + NumpadX\n\nconst vkMap = {\n    \"pause\": \"[0x11, 0x60]\",  // CTRL + Numpad0\n    \"tease_speed\": \"[0x11, 0x61]\",  // CTRL + Numpad1\n    \"slow_strokes_speed\": \"[0x11, 0x62]\",  // CTRL + Numpad2\n    \"average_stroke_speed\": \"[0x11, 0x63]\",  // CTRL + Numpad3\n    \"fast_stroke_speed\": \"[0x11, 0x64]\",  // CTRL + Numpad4\n    \"aggressive_stroke_speed\": \"[0x11, 0x65]\",  // CTRL + Numpad5\n    \"edge_speed\": \"[0x11, 0x66]\",  // CTRL + Numpad6\n    \"full_stroke\": \"[0x11, 0x67]\",  // CTRL + Numpad7\n    \"just_the_base\": \"[0x11, 0x68]\",  // CTRL + Numpad8\n    \"just_the_head\": \"[0x11, 0x69]\",  // CTRL + Numpad9\n\n    \"twiston\": \"[0x11, 0x37]\", // CTRL + 7 (Twist On)\n    \"twistoff\": \"[0x11, 0x38]\"  // CTRL + 8 (Twist Off)\n\n    //more possibilities for your ideas:\n    //\"speed10\": \"[0x11, 0x6A]\", // CTRL + Numpad *\n    //\"speed11\": \"[0x11, 0x6B]\", // CTRL + Numpad +\n    //\"speed12\": \"[0x11, 0x6C]\", // CTRL + Separator (Numpad Enter)\n    //\"speed13\": \"[0x11, 0x6D]\", // CTRL + Numpad -\n    //\"speed14\": \"[0x11, 0x6E]\", // CTRL + Numpad .\n    //\"speed15\": \"[0x11, 0x6F]\",  // CTRL + Numpad /\n};\n\n// Check if the incoming payload matches a action trigger\nif (typeof msg.payload === \"string\" && vkMap.hasOwnProperty(msg.payload)) {\n    msg.payload = vkMap[msg.payload];\n} else {\n    return null; // Ignore invalid inputs\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "3c79518818f8ca0e"
+            ]
+        ]
+    },
+    {
+        "id": "b16a856fbd49b55b",
+        "type": "noxy-sequencer",
+        "z": "675a23e0d48d3489",
+        "name": "",
+        "sequence": [
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "pause"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "twiston"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "twistoff"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "tease_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "slow_strokes_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "average_strokes_sleep"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "fast_stroke_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "aggressive_stroke_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "edge_speed"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "full_stroke"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "just_the_base"
+            },
+            {
+                "type": "delay",
+                "from": "100",
+                "to": "",
+                "unit": "ms"
+            },
+            {
+                "type": "output",
+                "outputType": "string",
+                "value": "just_the_head"
+            }
+        ],
+        "outputs": 1,
+        "outputLabels": [
+            ""
+        ],
+        "x": 1060,
+        "y": 640,
+        "wires": [
+            [
+                "022aabd5f0653fef"
+            ]
+        ]
+    },
+    {
+        "id": "15376ac01e2f58cc",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "127.0.0.1",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
