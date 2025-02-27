@@ -1,6 +1,7 @@
 # Noxy-RED.core
 Noxy-RED Consolidation from .api and Standalone to .core for Mainstreaming the Project
 
+requirements:
 .net framework 8.0 runtime:
 https://dotnet.microsoft.com/en-us/download/dotnet/8.0
 
