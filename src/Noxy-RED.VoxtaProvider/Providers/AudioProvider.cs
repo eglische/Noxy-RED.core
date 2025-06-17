@@ -62,7 +62,7 @@ namespace Voxta.SampleProviderApp.Providers
             if (!Directory.Exists(_audioDirectory))
             {
                 _logger.LogError("Audio directory not found: {AudioDirectory}", _audioDirectory);
-                throw new DirectoryNotFoundException($"Audio directory not found: {_audioDirectory}");
+                //throw new DirectoryNotFoundException($"Audio directory not found: {_audioDirectory}");
             }
 
             // Index audio files

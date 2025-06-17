@@ -27,7 +27,7 @@ public class BackgroundContextUpdaterProvider : ProviderBase
     private readonly int _port;
     private bool _chatEnabled = false;
     private bool _subscribed = false;
-    private static bool _eventHandlerAttached = false;
+    private bool _eventHandlerAttached = false; // as per .142 session per instance fix
 
     private readonly ConcurrentDictionary<string, DateTime> _recentMessages = new();
     private readonly TimeSpan _duplicateWindow = TimeSpan.FromSeconds(5); // Reduced window for more precise duplicate detection

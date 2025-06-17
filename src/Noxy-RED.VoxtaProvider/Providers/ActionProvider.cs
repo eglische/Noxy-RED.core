@@ -26,7 +26,7 @@ namespace Voxta.SampleProviderApp.Providers
         private readonly string _brokerAddress;
         private readonly int _port;
 
-        private readonly ConcurrentDictionary<string, FunctionDefinition> _registeredActions = new();
+        private readonly ConcurrentDictionary<string, ScenarioActionDefinition> _registeredActions = new();
         private readonly CancellationTokenSource _cancellationTokenSource = new();
         private bool _disposed = false;
 
@@ -276,6 +276,13 @@ namespace Voxta.SampleProviderApp.Providers
                         Name = action.Name,
                         Description = action.Description,
                         Timing = action.Timing,
+                        Layer = action.Layer,
+                        Effect = new ActionEffect
+                        {
+                            Secret = action.Effect.Secret,
+                            Note = action.Effect.Note,
+                            SetFlags = action.Effect.SetFlags
+                        }
                         // Map other properties accordingly
                     }).ToArray() // Explicit conversion
                 });

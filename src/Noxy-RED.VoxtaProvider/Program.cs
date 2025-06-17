@@ -35,7 +35,7 @@ static async Task RunDependenciesInstaller()
 {
     try
     {
-        string scriptPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dependencies.ps1"); // Ensure full path
+        string scriptPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dependencies.ps1");
         if (!File.Exists(scriptPath))
         {
             Console.WriteLine($"Error: dependencies.ps1 not found at {scriptPath}");
@@ -47,8 +47,8 @@ static async Task RunDependenciesInstaller()
             FileName = "powershell.exe",
             Arguments = $"-NoExit -ExecutionPolicy Bypass -File \"{scriptPath}\"",
             UseShellExecute = true,
-            Verb = "runas", // Run as administrator
-            WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory // Set working directory
+            Verb = "runas",
+            WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory
         };
         Process.Start(psi);
     }
@@ -108,7 +108,7 @@ static async Task<bool> StartProcessAndWaitAsync(string processName, string comm
     }
     else
     {
-        Console.WriteLine($"Noxy-RED.core could not find {processName} installed on your system. This is most likely the case if you never ran Noxy-RED.core before.");
+        Console.WriteLine($"Noxy-RED.core could not find {processName} installed on your system.");
         Console.WriteLine("Would you like to run the first-time installation (again)?");
         Console.WriteLine("Options: Install | Help | Close");
         while (true)
@@ -139,25 +139,24 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 
+// Display banner
+EnableVirtualTerminal();
+DrawBanner();
+Console.Write("\x1b[6;999r"); // Lock scroll region from row 6 downward
+Console.SetCursorPosition(0, 6); // Ensure cursor below banner
+
 string coreMethod = configuration["Voxta.Provider:Noxy-RED.coreMethod"] ?? "local";
 
 if (coreMethod == "local")
 {
-    // Start Mosquitto
     if (!await StartProcessAndWaitAsync("mosquitto", "\"C:\\Program Files\\Mosquitto\\mosquitto.exe\" -v", 5))
-    {
         return;
-    }
 
-    // Start Node-RED
     string nodeExePath = "\"C:\\Program Files\\nodejs\\node.exe\"";
     string redJsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "npm", "node_modules", "node-red", "red.js");
     if (!await StartProcessAndWaitAsync("node", $"{nodeExePath} \"{redJsPath}\"", 40, true))
-    {
         return;
-    }
 }
-
 
 // Dependency Injection
 var services = new ServiceCollection();
@@ -189,7 +188,7 @@ services.AddVoxtaProvider(builder =>
     builder.AddProvider<ApplicationProvider>();
 });
 
-// Build the application
+// Build and run
 var sp = services.BuildServiceProvider();
 var runtime = sp.GetRequiredService<IProviderAppHandler>();
 var cts = new CancellationTokenSource();
@@ -250,3 +249,54 @@ async Task DisposeResourcesOnShutdown(ServiceProvider serviceProvider, Cancellat
 }
 
 await DisposeResourcesOnShutdown(sp, cts.Token);
+
+static void EnableVirtualTerminal()
+{
+    if (OperatingSystem.IsWindows())
+    {
+        var handle = NativeMethods.GetStdHandle(-11);
+        NativeMethods.GetConsoleMode(handle, out var mode);
+        mode |= 0x0004;
+        NativeMethods.SetConsoleMode(handle, mode);
+    }
+}
+
+static void DrawBanner()
+{
+    Console.Clear();
+    int width = Console.WindowWidth;
+    string lineTop = new string('=', width);
+
+    string centeredTitle = CenterText("<<<<==== \x1b[37mNoxy-\x1b[31mRED\x1b[37m.core\x1b[0m ====>>>>", width);
+    string centeredInfo = CenterText("\x1b[34mby: Yeti_CH\x1b[0m  —  for support: ping \x1b[34m@yeti_ch\x1b[0m in the Voxta Discord under projects-> noxy-red", width);
+
+    Console.WriteLine(lineTop);
+    Console.WriteLine(centeredTitle);
+    Console.WriteLine(lineTop);
+    Console.WriteLine(centeredInfo);
+    Console.WriteLine();
+}
+
+static string CenterText(string text, int width)
+{
+    int rawLength = StripAnsi(text).Length;
+    int padding = Math.Max((width - rawLength) / 2, 0);
+    return new string(' ', padding) + text;
+}
+
+static string StripAnsi(string input)
+{
+    return System.Text.RegularExpressions.Regex.Replace(input, @"\x1B\[[0-9;]*[mGKH]", "");
+}
+
+internal static class NativeMethods
+{
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    internal static extern IntPtr GetStdHandle(int nStdHandle);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    internal static extern bool GetConsoleMode(IntPtr hConsoleHandle, out int lpMode);
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+    internal static extern bool SetConsoleMode(IntPtr hConsoleHandle, int dwMode);
+}
