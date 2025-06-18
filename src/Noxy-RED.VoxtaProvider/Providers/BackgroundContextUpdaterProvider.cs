@@ -55,7 +55,7 @@ public class BackgroundContextUpdaterProvider : ProviderBase
         if (!_eventHandlerAttached)
         {
             _mqttClient.ApplicationMessageReceivedAsync += OnMqttMessageReceivedAsync;
-            _eventHandlerAttached = true;
+            //_eventHandlerAttached = true;
             _logger.LogInformation("ApplicationMessageReceivedAsync handler attached.");
         }
         else
