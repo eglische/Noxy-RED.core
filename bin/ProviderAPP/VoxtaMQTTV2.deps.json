@@ -549,14 +549,7 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "System.Threading.Channels/9.0.6": {
-        "runtime": {
-          "lib/net9.0/System.Threading.Channels.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.625.26613"
-          }
-        }
-      },
+      "System.Threading.Channels/9.0.6": {},
       "vJoy.Wrapper/1.0.0.5": {
         "runtime": {
           "lib/netstandard2.0/vJoy.Wrapper.dll": {

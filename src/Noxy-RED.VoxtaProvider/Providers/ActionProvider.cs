@@ -39,8 +39,8 @@ namespace Voxta.SampleProviderApp.Providers
             _logger = logger;
             var mqttOptions = configuration.GetSection("MQTT").Get<ActionMqttOptions>();
             _mqttClient = new MqttFactory().CreateMqttClient();
-            _triggerTopic = mqttOptions.TriggerTopic; // Topic for outgoing triggers
-            _actionTopic = mqttOptions.ActionTopic; // Topic for incoming actions
+            _triggerTopic = mqttOptions.TriggerTopic;
+            _actionTopic = mqttOptions.ActionTopic;
             _brokerAddress = mqttOptions.BrokerAddress;
             _port = mqttOptions.Port;
             _mqttQoS = (MqttQualityOfServiceLevel)Enum.ToObject(typeof(MqttQualityOfServiceLevel), mqttOptions.QoS);
@@ -54,10 +54,9 @@ namespace Voxta.SampleProviderApp.Providers
             await base.OnStartAsync();
             await RetryWithBackoffAsync(ConnectAndSubscribeAsync, _cancellationTokenSource.Token);
 
-            // Unified handler for both ServerActionMessage and ServerActionAppTriggerMessage
             HandleMessage<ServerActionMessage>(message =>
             {
-                // Log detailed information about the action trigger
+                _logger.LogWarning("==> HANDLER FIRED: ServerActionMessage");
                 _logger.LogInformation("Received ServerActionMessage Trigger:");
                 _logger.LogInformation("  ContextKey: {ContextKey}", message.ContextKey);
                 _logger.LogInformation("  Layer: {Layer}", message.Layer);
@@ -79,24 +78,21 @@ namespace Voxta.SampleProviderApp.Providers
                     _logger.LogInformation("  Arguments: None");
                 }
 
-                // Check if this is an event
                 if (message.Role == Voxta.Model.Shared.ChatMessageRole.Event)
                 {
                     _logger.LogInformation("Event detected: {EventName}", message.Value);
-                    // Handle event-specific logic here
                 }
                 else
                 {
-                    // Default handling for action messages
                     _logger.LogInformation("Sending action trigger to MQTT broker");
-                    SendMqttMessage(message.Value);
+                    var args = message.Arguments?.Select(arg => new[] { arg.Name, arg.Value }).ToArray();
+                    SendMqttMessage(message.Value, args);
                 }
             });
 
-            // Handle ServerActionAppTriggerMessage
             HandleMessage<ServerActionAppTriggerMessage>(message =>
             {
-                // Log detailed information about the app trigger message
+                _logger.LogWarning("==> HANDLER FIRED: ServerActionAppTriggerMessage");
                 _logger.LogInformation("Received ServerActionAppTriggerMessage Trigger:");
                 _logger.LogInformation("  Name: {Name}", message.Name);
                 _logger.LogInformation("  SenderId: {SenderId}", message.SenderId);
@@ -115,9 +111,9 @@ namespace Voxta.SampleProviderApp.Providers
                     _logger.LogInformation("  Arguments: None");
                 }
 
-                // Always send AppTriggers from chat to MQTT
                 _logger.LogInformation("Sending AppTrigger to MQTT broker");
-                SendMqttMessage(message.Name);
+                var args = message.Arguments?.Select((v, i) => new string[] { $"arg{i}", v?.ToString() ?? "" }).ToArray();
+                SendMqttMessage(message.Name, args);
             });
         }
 
@@ -142,7 +138,6 @@ namespace Voxta.SampleProviderApp.Providers
                 _logger.LogInformation("  Arguments: None");
             }
         }
-
 
         private async Task RetryWithBackoffAsync(Func<Task> action, CancellationToken cancellationToken)
         {
@@ -186,12 +181,12 @@ namespace Voxta.SampleProviderApp.Providers
             await _mqttClient.ConnectAsync(options, _cancellationTokenSource.Token);
             _logger.LogInformation("Connected to MQTT broker.");
 
-            // Subscribe to the action topic for incoming actions
             await _mqttClient.SubscribeAsync(_actionTopic, _mqttQoS);
             _logger.LogInformation("Subscribed to MQTT topic: {ActionTopic}", _actionTopic);
 
             _mqttClient.ApplicationMessageReceivedAsync += OnMqttMessageReceivedAsync;
         }
+
         private async Task OnMqttMessageReceivedAsync(MqttApplicationMessageReceivedEventArgs e)
         {
             var topic = e.ApplicationMessage.Topic;
@@ -211,12 +206,10 @@ namespace Voxta.SampleProviderApp.Providers
                     return;
                 }
 
-                // If action is "remove", remove without mapping timing
                 if (actionMessage.Action == "remove")
                 {
                     RemoveAction(actionMessage.Name);
                 }
-                // If action is "add", proceed with mapping timing and adding
                 else if (actionMessage.Action == "add")
                 {
                     if (string.IsNullOrEmpty(actionMessage.Timing))
@@ -239,7 +232,6 @@ namespace Voxta.SampleProviderApp.Providers
             }
         }
 
-
         private void AddAction(ActionMessage actionMessage, FunctionTiming timing)
         {
             if (string.IsNullOrEmpty(actionMessage.Name))
@@ -259,34 +251,26 @@ namespace Voxta.SampleProviderApp.Providers
                     Secret = actionMessage.Secret,
                     Note = actionMessage.Note,
                     SetFlags = actionMessage.SetFlags
-                }
+                },
+                Arguments = actionMessage.Arguments?.Select(arg => new FunctionArgumentDefinition
+                {
+                    Name = arg.Name,
+                    Type = Enum.TryParse<FunctionArgumentType>(arg.Type, out var parsedType) ? parsedType : FunctionArgumentType.String,
+                    Required = arg.Required,
+                    Description = arg.Description
+                }).ToArray()
             };
 
             if (_registeredActions.TryAdd(actionMessage.Name, actionDefinition))
             {
                 _logger.LogInformation("Added action: {ActionName}", actionMessage.Name);
 
-                // Register the action with Voxta's inference system
                 Send(new ClientUpdateContextMessage
                 {
                     SessionId = SessionId,
                     ContextKey = "Actions",
-                    Actions = _registeredActions.Values.Select(action => new ScenarioActionDefinition
-                    {
-                        Name = action.Name,
-                        Description = action.Description,
-                        Timing = action.Timing,
-                        Layer = action.Layer,
-                        Effect = new ActionEffect
-                        {
-                            Secret = action.Effect.Secret,
-                            Note = action.Effect.Note,
-                            SetFlags = action.Effect.SetFlags
-                        }
-                        // Map other properties accordingly
-                    }).ToArray() // Explicit conversion
+                    Actions = _registeredActions.Values.ToArray()
                 });
-
             }
             else
             {
@@ -305,8 +289,6 @@ namespace Voxta.SampleProviderApp.Providers
             if (_registeredActions.TryRemove(actionName, out _))
             {
                 _logger.LogInformation("Removed action: {ActionName}", actionName);
-
-                // After removing the action, send an updated context message
                 UpdateChatContext();
             }
             else
@@ -317,27 +299,18 @@ namespace Voxta.SampleProviderApp.Providers
 
         private void UpdateChatContext()
         {
-            // Send updated list of registered actions to Voxta's inference system
             var contextMessage = new ClientUpdateContextMessage
             {
                 SessionId = SessionId,
                 ContextKey = "Actions",
-                Actions = _registeredActions.Values.Select(action => new ScenarioActionDefinition
-                {
-                    Name = action.Name,
-                    Description = action.Description,
-                    Timing = action.Timing,
-                    // Add necessary property mappings from FunctionDefinition to ScenarioActionDefinition
-                }).ToArray()
-
+                Actions = _registeredActions.Values.ToArray()
             };
 
             Send(contextMessage);
             _logger.LogInformation("Updated Voxta chat context after action change. Total actions: {ActionCount}", _registeredActions.Count);
         }
 
-
-        private void SendMqttMessage(string messageName)
+        private void SendMqttMessage(string name, string[][]? args = null)
         {
             if (_mqttClient == null || !_mqttClient.IsConnected)
             {
@@ -345,17 +318,24 @@ namespace Voxta.SampleProviderApp.Providers
                 return;
             }
 
-            // Sending the trigger as a simple string rather than JSON
-            var payload = System.Text.Encoding.UTF8.GetBytes(messageName);
+            var payloadString = name;
+            if (args != null)
+            {
+                foreach (var kv in args)
+                {
+                    payloadString += $":{kv[0]}:{kv[1]}";
+                }
+            }
+
+            var payload = System.Text.Encoding.UTF8.GetBytes(payloadString);
             var mqttMessage = new MqttApplicationMessageBuilder()
-                .WithTopic(_triggerTopic) // Using the correct topic for triggers
+                .WithTopic(_triggerTopic)
                 .WithPayload(payload)
                 .WithQualityOfServiceLevel(_mqttQoS)
                 .Build();
 
             _mqttClient.PublishAsync(mqttMessage).Wait();
-
-            _logger.LogInformation("Successfully sent MQTT message: {MessageName} to topic: {Topic}", messageName, _triggerTopic);
+            _logger.LogInformation("Successfully sent MQTT message: {Payload} to topic: {Topic}", payloadString, _triggerTopic);
         }
 
         private FunctionTiming MapTiming(string timing) => timing switch
@@ -370,8 +350,7 @@ namespace Voxta.SampleProviderApp.Providers
 
         public async ValueTask DisposeAsync()
         {
-            if (_disposed)
-                return;
+            if (_disposed) return;
 
             _logger.LogInformation("Disposing ActionProvider...");
             _cancellationTokenSource.Cancel();
@@ -407,6 +386,15 @@ namespace Voxta.SampleProviderApp.Providers
             public string Secret { get; set; }
             public string Note { get; set; }
             public bool CancelReply { get; set; }
+            public ArgumentDefinition[] Arguments { get; set; }
+        }
+
+        public class ArgumentDefinition
+        {
+            public string Name { get; set; }
+            public string Type { get; set; }
+            public bool Required { get; set; }
+            public string Description { get; set; }
         }
     }
 }
