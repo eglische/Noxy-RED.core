@@ -1,0 +1,4 @@
+Node.js runtime: v20.20.2 win-x64
+Node-RED: 4.1.8
+Custom Node-RED node: node-red-contrib-noxy-v2 (local folder payload)
+MultiFunPlayer payload: 1.31.5

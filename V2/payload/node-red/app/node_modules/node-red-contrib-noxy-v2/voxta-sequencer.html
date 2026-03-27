@@ -1,0 +1,228 @@
+<script type="text/javascript">
+(function () {
+    function promptImportMode() {
+        const answer = window.prompt('Import mode: type "append" to append or "replace" to replace existing steps.', 'append');
+        if (!answer) {
+            return null;
+        }
+        const mode = answer.trim().toLowerCase();
+        return mode === 'replace' ? 'replace' : mode === 'append' ? 'append' : null;
+    }
+
+    function readJsonFile(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                try {
+                    const parsed = JSON.parse(reader.result);
+                    if (!Array.isArray(parsed)) {
+                        reject(new Error('Expected a JSON array'));
+                        return;
+                    }
+                    resolve(parsed);
+                } catch (error) {
+                    reject(error);
+                }
+            };
+            reader.onerror = () => reject(new Error('Failed to read file'));
+            reader.readAsText(file);
+        });
+    }
+
+    function downloadJsonFile(filename, data) {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    function createSequenceRow(step) {
+        const row = $('<div/>', { class: 'voxta-sequencer-row', style: 'display:flex;align-items:flex-start;gap:8px;border:1px solid #ccc;border-radius:6px;padding:10px;margin-bottom:8px;background:#fff;' });
+        $('<div/>', { class: 'voxta-sequencer-drag', text: '☰', style: 'cursor:move;color:#777;font-size:16px;line-height:30px;padding:0 4px;' }).appendTo(row);
+
+        const body = $('<div/>', { style: 'flex:1;' }).appendTo(row);
+        const top = $('<div/>', { style: 'display:flex;gap:8px;align-items:center;margin-bottom:6px;' }).appendTo(body);
+
+        const type = $('<select/>', { class: 'node-input-sequence-type', style: 'width:120px;' })
+            .append('<option value="output">Output</option>')
+            .append('<option value="delay">Delay</option>')
+            .val(step?.type || 'output')
+            .appendTo(top);
+
+        const outputType = $('<select/>', { class: 'node-input-sequence-output-type', style: 'width:120px;' })
+            .append('<option value="string">String</option>')
+            .append('<option value="boolean">Boolean</option>')
+            .append('<option value="number">Number</option>')
+            .append('<option value="json">JSON</option>')
+            .val(step?.outputType || 'string')
+            .appendTo(top);
+
+        const remove = $('<button/>', { type: 'button', class: 'red-ui-button red-ui-button-small' }).text('Remove').appendTo(top);
+
+        const outputWrap = $('<div/>', { class: 'node-input-sequence-output-wrap', style: 'display:flex;gap:8px;align-items:center;' }).appendTo(body);
+        $('<input/>', { class: 'node-input-sequence-value', type: 'text', placeholder: 'Payload value', style: 'width:100%;' })
+            .val(step?.value ?? '')
+            .appendTo(outputWrap);
+
+        const delayWrap = $('<div/>', { class: 'node-input-sequence-delay-wrap', style: 'display:flex;gap:8px;align-items:center;' }).appendTo(body);
+        $('<span/>').text('From').appendTo(delayWrap);
+        $('<input/>', { class: 'node-input-sequence-from', type: 'number', min: '0', style: 'width:110px;' }).val(step?.from ?? '').appendTo(delayWrap);
+        $('<span/>').text('To').appendTo(delayWrap);
+        $('<input/>', { class: 'node-input-sequence-to', type: 'number', min: '0', style: 'width:110px;' }).val(step?.to ?? '').appendTo(delayWrap);
+        $('<select/>', { class: 'node-input-sequence-unit', style: 'width:110px;' })
+            .append('<option value="ms">Milliseconds</option>')
+            .append('<option value="seconds">Seconds</option>')
+            .append('<option value="minutes">Minutes</option>')
+            .val(step?.unit || 'ms')
+            .appendTo(delayWrap);
+
+        function updateVisibility() {
+            const isOutput = type.val() === 'output';
+            outputWrap.toggle(isOutput);
+            outputType.toggle(isOutput);
+            delayWrap.toggle(!isOutput);
+        }
+
+        type.on('change', updateVisibility);
+        remove.on('click', () => row.remove());
+        updateVisibility();
+        return row;
+    }
+
+    function readSequence(container) {
+        const sequence = [];
+        container.children('.voxta-sequencer-row').each(function () {
+            const row = $(this);
+            const type = row.find('.node-input-sequence-type').val();
+            if (type === 'output') {
+                sequence.push({
+                    type: 'output',
+                    outputType: row.find('.node-input-sequence-output-type').val() || 'string',
+                    value: row.find('.node-input-sequence-value').val()
+                });
+                return;
+            }
+
+            sequence.push({
+                type: 'delay',
+                from: row.find('.node-input-sequence-from').val(),
+                to: row.find('.node-input-sequence-to').val(),
+                unit: row.find('.node-input-sequence-unit').val() || 'ms'
+            });
+        });
+        return sequence;
+    }
+
+    function renderSequence(container, sequence) {
+        container.empty();
+        sequence.forEach((step) => container.append(createSequenceRow(step)));
+    }
+
+    const definition = {
+        category: 'Voxta',
+        color: '#f6f7fb',
+        defaults: {
+            name: { value: '' },
+            sequence: { value: [] }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'voxta.png',
+        label: function () {
+            return this.name || 'voxta-sequencer';
+        },
+        oneditprepare: function () {
+            const container = $('#node-input-sequence-container');
+            renderSequence(container, Array.isArray(this.sequence) ? this.sequence : []);
+
+            if ($.fn.sortable) {
+                container.sortable({ handle: '.voxta-sequencer-drag' });
+            }
+
+            $('#node-input-add-output').off('click').on('click', () => {
+                container.append(createSequenceRow({ type: 'output', outputType: 'string', value: '' }));
+            });
+
+            $('#node-input-add-delay').off('click').on('click', () => {
+                container.append(createSequenceRow({ type: 'delay', from: '', to: '', unit: 'ms' }));
+            });
+
+            $('#node-input-export-sequence').off('click').on('click', () => {
+                downloadJsonFile('voxta-sequencer.json', readSequence(container));
+            });
+
+            $('#node-input-import-sequence').off('click').on('click', () => {
+                $('#node-input-import-sequence-file').trigger('click');
+            });
+
+            $('#node-input-import-sequence-file').off('change').on('change', (event) => {
+                const file = event.target.files && event.target.files[0];
+                if (!file) {
+                    return;
+                }
+                readJsonFile(file).then((parsed) => {
+                    const mode = promptImportMode();
+                    if (!mode) {
+                        RED.notify('Import cancelled', 'warning');
+                        event.target.value = '';
+                        return;
+                    }
+                    const current = readSequence(container);
+                    const next = mode === 'replace' ? parsed : [...current, ...parsed];
+                    renderSequence(container, next);
+                    RED.notify(`Imported ${parsed.length} sequencer step(s)`, 'success');
+                    event.target.value = '';
+                }).catch((error) => {
+                    RED.notify(`Import failed: ${error.message}`, 'error');
+                    event.target.value = '';
+                });
+            });
+
+            $('#node-input-clear-sequence').off('click').on('click', () => {
+                if (!window.confirm('Delete all sequencer steps?')) {
+                    return;
+                }
+                container.empty();
+            });
+        },
+        oneditsave: function () {
+            this.sequence = readSequence($('#node-input-sequence-container'));
+        }
+    };
+
+    RED.nodes.registerType('voxta-sequencer', definition);
+})();
+</script>
+
+<script type="text/html" data-template-name="voxta-sequencer">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row" style="margin-bottom:6px;">
+        <label><i class="fa fa-random"></i> Steps</label>
+        <button type="button" class="red-ui-button" id="node-input-add-output">Add output</button>
+        <button type="button" class="red-ui-button" id="node-input-add-delay">Add delay</button>
+        <button type="button" class="red-ui-button" id="node-input-import-sequence">Import</button>
+        <button type="button" class="red-ui-button" id="node-input-export-sequence">Export</button>
+        <button type="button" class="red-ui-button" id="node-input-clear-sequence">Delete all</button>
+        <input type="file" id="node-input-import-sequence-file" accept=".json,application/json" style="display:none;">
+    </div>
+    <div class="form-row">
+        <div id="node-input-sequence-container" style="width:100%;"></div>
+    </div>
+    <div class="form-tips">
+        Sends each output step in order and waits on delay steps. Use <code>stop!</code> on the input to cancel a running sequence.
+    </div>
+</script>
+
+<script type="text/html" data-help-name="voxta-sequencer">
+    <p>Builds a simple timed sequence of output and delay steps.</p>
+    <p>Output steps emit a payload on the node output. Delay steps pause before the next step.</p>
+    <p>Send <code>stop!</code> to cancel the current run.</p>
+</script>

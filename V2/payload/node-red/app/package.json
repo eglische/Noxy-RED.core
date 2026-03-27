@@ -1,0 +1,14 @@
+{
+  "name": "noxy-node-red-bundle",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bundled Node-RED runtime for Noxy integrations",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node node_modules/node-red/red.js --userDir ../user"
+  },
+  "dependencies": {
+    "node-red": "4.1.8",
+    "node-red-contrib-noxy-v2": "file:../custom-nodes/node-red-contrib-noxy-v2"
+  }
+}
