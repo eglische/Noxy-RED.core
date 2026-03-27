@@ -1,0 +1,15 @@
+Expanded Node-RED dependencies intentionally omitted from Git.
+
+Package manifest is kept in this folder:
+- package.json
+- package-lock.json
+
+Primary sources:
+- npm package: https://www.npmjs.com/package/node-red/v/4.1.8
+- source repository: https://github.com/node-red/node-red
+
+Rebuild this folder by installing dependencies next to package.json so the installer sees:
+- payload/node-red/app/node_modules/node-red/...
+
+The local custom node remains referenced as:
+- file:../custom-nodes/node-red-contrib-noxy-v2

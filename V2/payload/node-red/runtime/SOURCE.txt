@@ -1,0 +1,14 @@
+Node.js runtime payload intentionally omitted from Git.
+
+Expected runtime:
+- Product: Node.js
+- Version: 20.20.2
+- Platform: win-x64
+- Original archive name: node-v20.20.2-win-x64.zip
+
+Official sources:
+- https://nodejs.org/dist/v20.20.2/node-v20.20.2-win-x64.zip
+- https://nodejs.org/dist/v20.20.2/SHASUMS256.txt
+
+Restore into this folder so the installer sees:
+- payload/node-red/runtime/node-v20.20.2-win-x64/...
